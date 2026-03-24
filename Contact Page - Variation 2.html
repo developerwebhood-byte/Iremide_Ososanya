@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#F5F5F0',
+                        ink: '#0A0A0A',
+                        slate: '#4A4A4A',
+                        line: '#E5E5E0'
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F5F5F0;
+            color: #0A0A0A;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .grid-line {
+            border-color: #E5E5E0;
+        }
+
+        .input-field {
+            border: 1px solid #0A0A0A;
+            background: transparent;
+            border-radius: 0;
+            transition: all 0.2s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            box-shadow: 2px 2px 0 #0A0A0A;
+        }
+
+        .btn-solid {
+            background: #0A0A0A;
+            color: #F5F5F0;
+            border: 1px solid #0A0A0A;
+            border-radius: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-solid:hover {
+            background: transparent;
+            color: #0A0A0A;
+        }
+
+        /* Hide scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F5F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E5E5E0;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0A0A0A;
+        }
+    </style>
+</head>
+<body class="w-full min-h-screen m-0 font-body selection:bg-ink selection:text-paper">
+
+    <div class="max-w-[1440px] mx-auto w-full min-h-screen flex flex-col border-x border-line grid-line">
+        
+        <!-- Header -->
+        <header id="header" class="w-full border-b border-line grid-line py-6 px-6 md:px-12 flex justify-between items-center bg-paper sticky top-0 z-50">
+            <a href="index.html" class="font-sans font-bold text-lg tracking-tight uppercase cursor-pointer">
+                Iremide Ososanya
+            </a>
+            
+            <nav class="hidden md:flex gap-8 font-mono text-sm uppercase tracking-widest">
+                <a href="index.html" class="hover:text-slate transition-colors">Home</a>
+                <a href="About Page 2 - Variation 1 (1).html" class="hover:text-slate transition-colors">About</a>
+                <a href="Contact Page - Variation 2.html" class="font-bold border-b border-ink pb-1">Contact</a>
+                <a href="index.html#works" class="hover:text-slate transition-colors">Works</a>
+            </nav>
+
+            <button class="md:hidden text-ink">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </header>
+
+        <!-- Main Content Wrapper -->
+        <main class="flex-grow flex flex-col">
+            
+            <!-- Hero / Intro -->
+            <section id="hero" class="w-full py-20 md:py-32 px-6 md:px-12 border-b border-line grid-line">
+                <div class="max-w-4xl">
+                    <span class="font-mono text-sm tracking-[0.2em] uppercase text-slate block mb-6">Contact</span>
+                    <h1 class="font-sans text-6xl md:text-8xl lg:text-[120px] font-bold leading-[0.9] tracking-tighter mb-8 uppercase">
+                        Get in Touch
+                    </h1>
+                    <p class="font-body text-xl md:text-2xl text-slate max-w-2xl leading-relaxed">
+                        Have a project, idea, or collaboration in mind? <br class="hidden md:block"/>
+                        I'd love to hear from you.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Contact Section Split -->
+            <section id="contact-split" class="w-full flex flex-col lg:flex-row flex-grow">
+                
+                <!-- Left Column: Info -->
+                <div class="w-full lg:w-1/3 border-b lg:border-b-0 lg:border-r border-line grid-line p-6 md:p-12 flex flex-col gap-12">
+                    
+                    <div class="contact-item">
+                        <h3 class="font-mono text-xs tracking-widest uppercase text-slate mb-3">Email</h3>
+                        <a href="mailto:iremideososanya@gmail.com" class="font-body text-xl md:text-2xl hover:underline decoration-1 underline-offset-4">
+                            iremideososanya@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3 class="font-mono text-xs tracking-widest uppercase text-slate mb-3">Phone</h3>
+                        <a href="tel:+14373390966" class="font-body text-xl md:text-2xl hover:underline decoration-1 underline-offset-4">
+                            +1 437 339 0966
+                        </a>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3 class="font-mono text-xs tracking-widest uppercase text-slate mb-3">Location</h3>
+                        <p class="font-body text-xl md:text-2xl">
+                            Canada
+                        </p>
+                    </div>
+
+                    <div class="contact-item pt-12 border-t border-line grid-line mt-auto">
+                        <h3 class="font-mono text-xs tracking-widest uppercase text-slate mb-4">Social</h3>
+                        <div class="flex flex-col gap-3">
+                            <a href="#" class="font-body text-lg hover:underline decoration-1 underline-offset-4 flex items-center justify-between group">
+                                LinkedIn
+                                <i class="fa-solid fa-arrow-right -rotate-45 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </a>
+                            <a href="#" class="font-body text-lg hover:underline decoration-1 underline-offset-4 flex items-center justify-between group">
+                                Instagram
+                                <i class="fa-solid fa-arrow-right -rotate-45 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Form -->
+                <div class="w-full lg:w-2/3 p-6 md:p-12 bg-paper">
+                    <form id="contact-form" class="max-w-3xl flex flex-col gap-8">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div class="flex flex-col gap-2">
+                                <label for="name" class="font-mono text-xs tracking-widest uppercase text-ink">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" class="input-field p-4 w-full font-body text-lg placeholder-slate/50" required>
+                            </div>
+                            
+                            <div class="flex flex-col gap-2">
+                                <label for="email" class="font-mono text-xs tracking-widest uppercase text-ink">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" class="input-field p-4 w-full font-body text-lg placeholder-slate/50" required>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label for="project" class="font-mono text-xs tracking-widest uppercase text-ink">Project Type</label>
+                            <div class="relative">
+                                <select id="project" name="project" class="input-field p-4 w-full font-body text-lg appearance-none bg-transparent cursor-pointer">
+                                    <option value="" disabled selected class="text-slate">Select a project type...</option>
+                                    <option value="branding">Branding Design</option>
+                                    <option value="web">Web Design</option>
+                                    <option value="app">App Design</option>
+                                    <option value="illustration">Illustration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                                    <i class="fa-solid fa-chevron-down text-ink text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label for="message" class="font-mono text-xs tracking-widest uppercase text-ink">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." class="input-field p-4 w-full font-body text-lg placeholder-slate/50 resize-y" required></textarea>
+                        </div>
+
+                        <div class="mt-4 flex flex-col items-start gap-4">
+                            <button type="submit" class="btn-solid py-5 px-10 font-mono uppercase tracking-widest text-sm font-bold w-full md:w-auto flex items-center justify-center gap-3 group">
+                                Send Message
+                                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                            <p class="font-mono text-xs text-slate tracking-wide">
+                                I'll get back to you within 1–2 days.
+                            </p>
+                        </div>
+
+                    </form>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer" class="w-full border-t border-line grid-line py-8 px-6 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 bg-paper mt-auto">
+            <div class="flex flex-col gap-1">
+                <span class="font-sans font-bold text-lg uppercase tracking-tight">Iremide Ososanya</span>
+                <span class="font-mono text-xs text-slate uppercase tracking-widest">Designer · Illustrator · Visual Storyteller</span>
+            </div>
+            
+            <div class="flex flex-col md:items-end gap-1">
+                <span class="font-mono text-xs text-slate uppercase tracking-widest">Based in Canada</span>
+                <span class="font-mono text-xs text-slate uppercase tracking-widest">© 2026 All rights reserved</span>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

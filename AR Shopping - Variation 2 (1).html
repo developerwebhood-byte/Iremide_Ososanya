@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest'
+        };
+      </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantrii - AR Shopping Experience Case Study</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Marcellus', 'serif'],
+                    },
+                    colors: {
+                        'earth-100': '#F9F8F6',
+                        'earth-200': '#EAE5DF',
+                        'earth-300': '#D5CEC4',
+                        'earth-400': '#B8B0A3',
+                        'earth-800': '#4A4640',
+                        'earth-900': '#2D2A26',
+                        'accent-sage': '#A3B8A8',
+                        'accent-sand': '#DDBA9A',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-organic': 'linear-gradient(135deg, #F9F8F6 0%, #EAE5DF 100%)',
+                        'gradient-warm': 'linear-gradient(180deg, #F9F8F6 0%, #F4F1ED 100%)',
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                        '5xl': '3rem',
+                        'organic': '40% 60% 70% 30% / 40% 50% 60% 50%',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2D2A26;
+            background-color: #F9F8F6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: 'Marcellus', serif;
+        }
+        .organic-shape {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite alternate;
+        }
+        @keyframes morph {
+            0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 50% 40% 50%; }
+        }
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F8F6; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D5CEC4; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B8B0A3; 
+        }
+    </style>
+</head>
+<body class="w-full min-h-screen m-0 p-0 antialiased selection:bg-accent-sage selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="header" class="fixed w-full z-50 bg-earth-100/80 backdrop-blur-md border-b border-earth-200/50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl tracking-widest text-earth-900">PANTRII</a>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#case-study" class="text-sm font-medium text-earth-800 hover:text-accent-sage transition-colors">Case Study</a>
+                    <a href="#process" class="text-sm font-medium text-earth-800 hover:text-accent-sage transition-colors">Process</a>
+                    <a href="#solution" class="text-sm font-medium text-earth-800 hover:text-accent-sage transition-colors">Solution</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-earth-900 text-white text-sm font-medium hover:bg-earth-800 transition-colors">Get in touch</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-earth-900 hover:text-accent-sage focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="relative w-full min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-organic">
+        <!-- Decorative background elements -->
+        <div class="absolute top-1/4 left-10 w-64 h-64 bg-accent-sage/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div class="absolute top-1/3 right-10 w-72 h-72 bg-accent-sand/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-1/2 w-80 h-80 bg-earth-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                
+                <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
+                    <div class="fade-in-up inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm border border-earth-200 mb-8 shadow-sm">
+                        <span class="text-xs font-medium text-earth-800 tracking-wider uppercase">Project</span>
+                        <span class="w-1 h-1 rounded-full bg-earth-400"></span>
+                        <span class="text-xs font-medium text-earth-800 tracking-wider uppercase">UX/UI Design</span>
+                        <span class="w-1 h-1 rounded-full bg-earth-400"></span>
+                        <span class="text-xs font-medium text-earth-800 tracking-wider uppercase">2023</span>
+                    </div>
+
+                    <h1 class="fade-in-up delay-100 font-serif text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-earth-900 tracking-widest mb-2 leading-none">
+                        Pantrii
+                    </h1>
+                    <h2 class="fade-in-up delay-200 font-serif text-2xl sm:text-3xl lg:text-4xl text-earth-800 italic mb-8">
+                        AR Shopping Experience
+                    </h2>
+
+                    <p class="fade-in-up delay-300 text-lg sm:text-xl text-earth-800/80 max-w-xl leading-relaxed font-light">
+                        Pantrii is a mobile AR app that connects users with products naturally, transforming the shopping journey into an intuitive, human-centered discovery experience.
+                    </p>
+                </div>
+
+                <div class="w-full lg:w-1/2 relative flex justify-center lg:justify-end mt-12 lg:mt-0">
+                    <div class="relative w-full max-w-md aspect-[3/4] fade-in-up delay-300">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-accent-sage/30 to-accent-sand/30 organic-shape blur-2xl transform scale-110 z-0"></div>
+                        <div class="relative z-10 w-full h-full rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white/40 backdrop-blur-sm transform rotate-[-2deg] hover:rotate-0 transition-transform duration-700">
+                            <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/bc13d36ec1-26dc45a922d3349bfbc6.png" alt="Mobile app interface showing augmented reality shopping view with organic natural soft UI elements, warm lighting, floating product cards" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. INTRO CARDS -->
+    <section id="intro-cards" class="w-full py-24 bg-earth-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-white/70 backdrop-blur-md rounded-4xl p-8 shadow-sm border border-white/50 transform hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-full bg-earth-100 flex items-center justify-center mb-6 group-hover:bg-accent-sage/20 transition-colors">
+                        <i class="fa-solid fa-briefcase text-earth-800"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-earth-900 mb-3">Project Type</h3>
+                    <p class="text-earth-800/70 font-light leading-relaxed">Conceptual Product Design, AR Interface, E-commerce</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white/70 backdrop-blur-md rounded-4xl p-8 shadow-sm border border-white/50 transform hover:-translate-y-2 transition-all duration-300 group lg:translate-y-4">
+                    <div class="w-12 h-12 rounded-full bg-earth-100 flex items-center justify-center mb-6 group-hover:bg-accent-sand/20 transition-colors">
+                        <i class="fa-solid fa-mobile-screen text-earth-800"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-earth-900 mb-3">Platform</h3>
+                    <p class="text-earth-800/70 font-light leading-relaxed">iOS Mobile Application, Augmented Reality (ARKit)</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white/70 backdrop-blur-md rounded-4xl p-8 shadow-sm border border-white/50 transform hover:-translate-y-2 transition-all duration-300 group lg:translate-y-8">
+                    <div class="w-12 h-12 rounded-full bg-earth-100 flex items-center justify-center mb-6 group-hover:bg-accent-sage/20 transition-colors">
+                        <i class="fa-solid fa-bullseye text-earth-800"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-earth-900 mb-3">Goal</h3>
+                    <p class="text-earth-800/70 font-light leading-relaxed">Bridge the tactile gap in digital retail through spatial computing.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white/70 backdrop-blur-md rounded-4xl p-8 shadow-sm border border-white/50 transform hover:-translate-y-2 transition-all duration-300 group lg:translate-y-12">
+                    <div class="w-12 h-12 rounded-full bg-earth-100 flex items-center justify-center mb-6 group-hover:bg-accent-sand/20 transition-colors">
+                        <i class="fa-regular fa-eye text-earth-800"></i>
+                    </div>
+                    <h3 class="font-serif text-xl text-earth-900 mb-3">Focus</h3>
+                    <p class="text-earth-800/70 font-light leading-relaxed">Human-centered interactions, organic UI, emotional connection.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. NARRATIVE STATEMENT -->
+    <section id="narrative" class="w-full py-32 bg-white relative overflow-hidden">
+        <!-- Subtle texture overlay -->
+        <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%232D2A26\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-earth-900 mb-10 leading-tight">
+                Shopping is fundamentally <span class="italic text-accent-sage">human.</span>
+            </h2>
+            <div class="w-24 h-1 bg-earth-200 mx-auto mb-10 rounded-full"></div>
+            <p class="text-xl sm:text-2xl text-earth-800/80 leading-relaxed font-light max-w-4xl mx-auto">
+                Our brains are wired to explore physically, touch products, and experience spatial relationships. Digital shopping can feel disconnected from these natural instincts. Pantrii seeks to restore that connection.
+            </p>
+        </div>
+    </section>
+
+    <!-- 4. IMMERSIVE VISUAL -->
+    <section id="immersive-visual" class="w-full py-20 bg-earth-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative w-full aspect-video rounded-[3rem] overflow-hidden shadow-2xl">
+                <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/b2439d5936-986b514f0f49fedb2a40.png" alt="Cinematic soft focus photography of a hand interacting with floating augmented reality elements in a warm natural lit room, organic shapes, soft edges" />
+                <div class="absolute inset-0 bg-gradient-to-t from-earth-900/40 to-transparent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. HUMAN INSIGHTS -->
+    <section id="insights" class="w-full py-32 bg-gradient-to-b from-earth-100 to-earth-200/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <div class="w-full lg:w-5/12">
+                    <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-8 leading-tight">
+                        Human Connection <br>to <span class="italic text-accent-sand">Shopping</span>
+                    </h2>
+                    <p class="text-lg text-earth-800/70 leading-relaxed font-light mb-8">
+                        Through extensive user research, we discovered a profound gap between the convenience of e-commerce and the emotional satisfaction of physical retail. The digital space lacked the tactile feedback and spatial awareness that humans naturally crave when evaluating objects.
+                    </p>
+                    <div class="w-16 h-16 bg-accent-sage/20 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-seedling text-2xl text-accent-sage"></i>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-7/12">
+                    <div class="space-y-6">
+                        <!-- Stat 1 -->
+                        <div class="bg-white/80 backdrop-blur-sm rounded-4xl p-8 shadow-sm flex items-center gap-6 transform transition-transform hover:scale-[1.02]">
+                            <div class="font-serif text-5xl text-accent-sage w-24 flex-shrink-0">83%</div>
+                            <p class="text-xl text-earth-900 font-medium">of shoppers crave tactile experiences when making purchase decisions.</p>
+                        </div>
+                        
+                        <!-- Stat 2 -->
+                        <div class="bg-white/80 backdrop-blur-sm rounded-4xl p-8 shadow-sm flex items-center gap-6 transform transition-transform hover:scale-[1.02] ml-0 lg:ml-12">
+                            <div class="font-serif text-5xl text-accent-sand w-24 flex-shrink-0">72%</div>
+                            <p class="text-xl text-earth-900 font-medium">feel more connected to brands that offer interactive discovery.</p>
+                        </div>
+
+                        <!-- Stat 3 -->
+                        <div class="bg-white/80 backdrop-blur-sm rounded-4xl p-8 shadow-sm flex items-center gap-6 transform transition-transform hover:scale-[1.02] ml-0 lg:ml-24">
+                            <div class="font-serif text-5xl text-earth-400 w-24 flex-shrink-0">61%</div>
+                            <p class="text-xl text-earth-900 font-medium">remember products they've "touched" virtually significantly better.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. DESIGN CHALLENGE -->
+    <section id="challenge" class="w-full py-32 bg-earth-900 text-earth-100 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-accent-sage/10 rounded-full mix-blend-screen filter blur-3xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent-sand/10 rounded-full mix-blend-screen filter blur-3xl opacity-50 transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20">
+                <span class="text-accent-sage text-sm font-medium tracking-widest uppercase mb-4 block">The Challenge</span>
+                <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl mb-6">Designing for Nature</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Block 1 -->
+                <div class="bg-earth-800/40 backdrop-blur-md rounded-[3rem] p-10 border border-earth-800/50 hover:bg-earth-800/60 transition-colors">
+                    <div class="w-14 h-14 rounded-full bg-earth-900 flex items-center justify-center mb-8">
+                        <i class="fa-solid fa-leaf text-accent-sage text-xl"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl mb-4">"How do we make digital feel natural?"</h3>
+                    <p class="text-earth-300 font-light leading-relaxed">Moving away from rigid grids and sharp corners to embrace fluid, organic layouts that mimic natural environments.</p>
+                </div>
+
+                <!-- Block 2 -->
+                <div class="bg-earth-800/40 backdrop-blur-md rounded-[3rem] p-10 border border-earth-800/50 hover:bg-earth-800/60 transition-colors md:-translate-y-8">
+                    <div class="w-14 h-14 rounded-full bg-earth-900 flex items-center justify-center mb-8">
+                        <i class="fa-solid fa-heart text-accent-sand text-xl"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl mb-4">"Creating emotional connections"</h3>
+                    <p class="text-earth-300 font-light leading-relaxed">Using warm color palettes, soft typography, and micro-interactions that respond to user input like living elements.</p>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="bg-earth-800/40 backdrop-blur-md rounded-[3rem] p-10 border border-earth-800/50 hover:bg-earth-800/60 transition-colors">
+                    <div class="w-14 h-14 rounded-full bg-earth-900 flex items-center justify-center mb-8">
+                        <i class="fa-solid fa-cube text-earth-300 text-xl"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl mb-4">"Honoring our spatial instincts"</h3>
+                    <p class="text-earth-300 font-light leading-relaxed">Leveraging AR to allow users to perceive scale, texture, and presence in their actual physical environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. INTERFACE EXPLORATION -->
+    <section id="exploration" class="w-full py-32 bg-gradient-warm relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6">Interface Exploration</h2>
+                <p class="text-lg text-earth-800/70 font-light">Iterating towards a UI that feels less like software and more like an extension of the physical world.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left Column -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="bg-white rounded-[2.5rem] p-8 shadow-lg border border-earth-200/50 transform hover:-translate-y-1 transition-transform">
+                        <h4 class="font-serif text-xl text-earth-900 mb-2">Soft Component Library</h4>
+                        <p class="text-earth-800/70 text-sm mb-6">Buttons and cards designed with organic radii and soft, diffuse shadows.</p>
+                        <div class="flex gap-4">
+                            <button class="px-6 py-3 rounded-full bg-earth-900 text-white text-sm shadow-[0_8px_20px_rgba(45,42,38,0.15)]">Primary Action</button>
+                            <button class="px-6 py-3 rounded-full bg-earth-200 text-earth-900 text-sm">Secondary</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-[2.5rem] p-8 shadow-lg border border-earth-200/50 transform hover:-translate-y-1 transition-transform">
+                        <h4 class="font-serif text-xl text-earth-900 mb-2">Natural Typography</h4>
+                        <p class="text-earth-800/70 text-sm mb-6">Marcellus for elegant, humanistic headings; Inter for highly legible, clean interfaces.</p>
+                        <div class="space-y-3">
+                            <h1 class="font-serif text-3xl text-earth-900">Marcellus Regular</h1>
+                            <p class="font-sans text-base text-earth-800/80">Inter Light for body copy.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center/Right Image -->
+                <div class="lg:col-span-7 relative">
+                    <div class="absolute inset-0 bg-accent-sage/10 rounded-[3rem] transform rotate-3 scale-105 z-0"></div>
+                    <div class="relative z-10 bg-white rounded-[3rem] p-4 shadow-2xl">
+                        <div class="rounded-[2.5rem] overflow-hidden">
+                            <img class="w-full h-auto object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3d39a3c15a-0330da12b7cfa37b8fbe.png" alt="UI design showcase of mobile app screens with soft beige colors, rounded cards, organic layout, fashion products, clean typography" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. DESIGN PHILOSOPHY -->
+    <section id="philosophy" class="w-full py-32 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="w-20 h-20 mx-auto rounded-full bg-earth-100 flex items-center justify-center mb-10">
+                <i class="fa-solid fa-fingerprint text-3xl text-earth-400"></i>
+            </div>
+            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-earth-900 mb-8 leading-tight">
+                Can digital shopping feel as <span class="italic text-accent-sage">natural</span> as browsing in person?
+            </h2>
+            <p class="text-xl text-earth-800/70 leading-relaxed font-light">
+                Our philosophy was to strip away the rigid scaffolding of traditional e-commerce. No more endless grids of identical squares. Instead, we designed an interface that breathes, flows, and responds to the user's focus, much like a well-curated physical boutique.
+            </p>
+        </div>
+    </section>
+
+    <!-- 9. SOLUTION PRESENTATION -->
+    <section id="solution" class="w-full py-32 bg-earth-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl">
+                        <img class="w-full aspect-[4/5] object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/6c744a4601-d17a6ae386deb2221a70.png" alt="Person holding smartphone using AR shopping app, soft natural lighting, warm aesthetic, showing a 3D product floating in real space" />
+                    </div>
+                    <!-- Decorative element -->
+                    <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-accent-sand/20 rounded-full mix-blend-multiply blur-2xl z-0"></div>
+                </div>
+
+                <div class="w-full lg:w-1/2 space-y-12">
+                    <div>
+                        <span class="text-accent-sage text-sm font-medium tracking-widest uppercase mb-3 block">The Solution</span>
+                        <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6">Bringing Products into Your Space</h2>
+                        <p class="text-lg text-earth-800/70 font-light leading-relaxed">
+                            Pantrii utilizes advanced ARKit capabilities to anchor high-fidelity 3D models into the user's environment. The UI recedes, allowing the product to take center stage.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-cube text-earth-800"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl text-earth-900 mb-2">True-to-Scale Rendering</h4>
+                                <p class="text-earth-800/70 font-light text-sm">Products appear exactly as they would in real life, eliminating size guesswork.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-sun text-earth-800"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl text-earth-900 mb-2">Environmental Lighting</h4>
+                                <p class="text-earth-800/70 font-light text-sm">Materials react dynamically to the ambient lighting of the user's physical room.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. HUMAN FEATURES -->
+    <section id="features" class="w-full py-32 bg-earth-200/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6">Designed for Humans</h2>
+            </div>
+
+            <div class="space-y-32">
+                <!-- Feature 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
+                    <div class="w-full md:w-1/2 order-2 md:order-1">
+                        <h3 class="font-serif text-3xl text-earth-900 mb-4">Intuitive AR Discovery</h3>
+                        <p class="text-earth-800/70 font-light leading-relaxed mb-6">
+                            Instead of rigid search bars, users can pan their device to discover curated products placed contextually in their environment, mimicking the serendipity of window shopping.
+                        </p>
+                        <ul class="space-y-3 text-earth-800/80 font-light">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent-sage text-sm"></i> Contextual placement</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent-sage text-sm"></i> Spatial browsing</li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/2 order-1 md:order-2">
+                        <div class="bg-white p-4 rounded-[3rem] shadow-xl">
+                            <img class="w-full aspect-square object-cover rounded-[2.5rem]" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/0e00f3c420-9cfa6e5c474aa482480d.png" alt="UI mockup of AR discovery feature, scanning room, floating soft UI cards with product information" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
+                    <div class="w-full md:w-1/2">
+                        <div class="bg-white p-4 rounded-[3rem] shadow-xl">
+                            <img class="w-full aspect-square object-cover rounded-[2.5rem]" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/280d47d448-a3b8d63fa8c9c2c8e257.png" alt="UI mockup showing hand gesture interaction with 3D product model, soft warm interface elements" />
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <h3 class="font-serif text-3xl text-earth-900 mb-4">Natural Product Interaction</h3>
+                        <p class="text-earth-800/70 font-light leading-relaxed mb-6">
+                            Interact with digital items using natural hand gestures. Rotate, open, and inspect products just as you would if you were holding them.
+                        </p>
+                        <ul class="space-y-3 text-earth-800/80 font-light">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent-sand text-sm"></i> Gesture recognition</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-accent-sand text-sm"></i> Physics-based interactions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-24">
+                    <div class="w-full md:w-1/2 order-2 md:order-1">
+                        <h3 class="font-serif text-3xl text-earth-900 mb-4">Human-Friendly Checkout</h3>
+                        <p class="text-earth-800/70 font-light leading-relaxed mb-6">
+                            A seamless, low-friction checkout process that feels conversational rather than transactional. Soft confirmations and gentle micro-animations reduce purchase anxiety.
+                        </p>
+                        <ul class="space-y-3 text-earth-800/80 font-light">
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-earth-400 text-sm"></i> Conversational UI</li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-check text-earth-400 text-sm"></i> Calming visual feedback</li>
+                        </ul>
+                    </div>
+                    <div class="w-full md:w-1/2 order-1 md:order-2">
+                        <div class="bg-white p-4 rounded-[3rem] shadow-xl">
+                            <img class="w-full aspect-square object-cover rounded-[2.5rem]" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/824d087800-369446ae4ef4911944c6.png" alt="Clean minimal checkout UI screen, soft beige background, rounded input fields, elegant typography" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. OUTCOME -->
+    <section id="outcome" class="w-full py-32 bg-earth-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6">The Natural Outcome</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="relative group overflow-hidden rounded-[3rem]">
+                    <img class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa93514aa2-0c90da8e744ccd8444d1.png" alt="Lifestyle photography of person using app happily in warm living room setting" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-10">
+                        <h4 class="font-serif text-2xl text-white mb-2">Increased Confidence</h4>
+                        <p class="text-white/80 font-light">Users reported a 45% increase in purchase confidence due to spatial context.</p>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-[3rem]">
+                    <img class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ec83842e74-a9c7cd85b9fbb6e3bcf2.png" alt="Close up of beautiful elegant UI design on mobile screen, soft shadows, premium feel" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-10">
+                        <h4 class="font-serif text-2xl text-white mb-2">Extended Engagement</h4>
+                        <p class="text-white/80 font-light">Average session time doubled as users enjoyed the playful discovery process.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. MISSION STATEMENT -->
+    <section id="mission" class="w-full py-40 bg-white border-t border-earth-200/50 text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-earth-900 mb-10 leading-tight">
+                Bringing the <span class="italic text-accent-sand">human touch</span> to digital shopping.
+            </h2>
+            <p class="text-xl sm:text-2xl text-earth-800/80 leading-relaxed font-light">
+                Pantrii bridges the gap between digital convenience and the natural human desire to explore, touch, and experience products in space. It's not just about buying; it's about connecting.
+            </p>
+        </div>
+    </section>
+
+    <!-- 13. NEXT PROJECT NAVIGATION -->
+    <section id="next-project" class="w-full bg-earth-900 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="#" class="group flex items-center gap-4 text-earth-300 hover:text-white transition-colors">
+                    <div class="w-12 h-12 rounded-full border border-earth-700 flex items-center justify-center group-hover:border-white transition-colors">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest block text-earth-400 mb-1">Previous</span>
+                        <span class="font-serif text-lg">Aura Wellness App</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="group flex items-center gap-4 text-earth-300 hover:text-white transition-colors text-right">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest block text-earth-400 mb-1">Next</span>
+                        <span class="font-serif text-lg">Lumina Dashboard</span>
+                    </div>
+                    <div class="w-12 h-12 rounded-full border border-earth-700 flex items-center justify-center group-hover:border-white transition-colors">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full bg-earth-900 pt-16 pb-8 border-t border-earth-800 text-earth-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="font-serif text-2xl text-white mb-6 tracking-widest">PANTRII</h3>
+                    <p class="font-light text-earth-400 max-w-sm mb-6">A conceptual AR shopping experience focused on human-centered design and organic interactions.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-earth-800 flex items-center justify-center hover:bg-white hover:text-earth-900 transition-colors">
+                            <i class="fa-brands fa-dribbble"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-earth-800 flex items-center justify-center hover:bg-white hover:text-earth-900 transition-colors">
+                            <i class="fa-brands fa-behance"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-earth-800 flex items-center justify-center hover:bg-white hover:text-earth-900 transition-colors">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-medium text-white mb-6 uppercase tracking-wider text-sm">Navigation</h4>
+                    <ul class="space-y-3 font-light">
+                        <li><a href="#hero" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#challenge" class="hover:text-white transition-colors">Challenge</a></li>
+                        <li><a href="#solution" class="hover:text-white transition-colors">Solution</a></li>
+                        <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-medium text-white mb-6 uppercase tracking-wider text-sm">Contact</h4>
+                    <ul class="space-y-3 font-light">
+                        <li><a href="mailto:hello@example.com" class="hover:text-white transition-colors">hello@designer.com</a></li>
+                        <li><span class="text-earth-500">Available for freelance</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-earth-800 flex flex-col md:flex-row justify-between items-center gap-4 font-light text-sm text-earth-500">
+                <p>&copy; 2023 UX/UI Case Study. All rights reserved.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-earth-300 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-earth-300 transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll effect for header
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-sm');
+                header.classList.replace('bg-earth-100/80', 'bg-white/90');
+            } else {
+                header.classList.remove('shadow-sm');
+                header.classList.replace('bg-white/90', 'bg-earth-100/80');
+            }
+        });
+    </script>
+</body>
+</html>
