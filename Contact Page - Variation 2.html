@@ -21,7 +21,9 @@
                         paper: '#F5F5F0',
                         ink: '#0A0A0A',
                         slate: '#4A4A4A',
-                        line: '#E5E5E0'
+                        volt: '#9b8fc9',
+                        line: '#E5E5E0',
+                        charcoal: '#121212',
                     },
                     fontFamily: {
                         sans: ['Space Grotesk', 'sans-serif'],
@@ -89,22 +91,63 @@
     <div class="max-w-[1440px] mx-auto w-full min-h-screen flex flex-col border-x border-line grid-line">
         
         <!-- Header -->
-        <header id="header" class="w-full border-b border-line grid-line py-6 px-6 md:px-12 flex justify-between items-center bg-paper sticky top-0 z-50">
-            <a href="index.html" class="font-sans font-bold text-lg tracking-tight uppercase cursor-pointer">
-                Iremide Ososanya
-            </a>
-            
-            <nav class="hidden md:flex gap-8 font-mono text-sm uppercase tracking-widest">
-                <a href="index.html" class="hover:text-slate transition-colors">Home</a>
-                <a href="About Page 2 - Variation 1 (1).html" class="hover:text-slate transition-colors">About</a>
-                <a href="Contact Page - Variation 2.html" class="font-bold border-b border-ink pb-1">Contact</a>
-                <a href="index.html#works" class="hover:text-slate transition-colors">Works</a>
-            </nav>
+        <nav
+      id="navigation"
+      class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-dark px-6 py-4 flex justify-between items-center transition-all duration-300"
+    >
+      <div class="flex items-center gap-4">
+        <span
+          class="text-white text-2xl font-bold cursor-pointer hover:text-grey-400 hover:transform-scale(1.5) headline tracking-tighter"
+          >Iremide Ososanya</span
+        >
+      </div>
 
-            <button class="md:hidden text-ink">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-        </header>
+      <div class="hidden md:flex items-center space-x-8">
+        <a
+          href="index.html"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> HOME
+        </a>
+        <a
+          href="About Page 2 - Variation 1 (1).html"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> ABOUT
+        </a>
+        <div class="relative group h-full flex items-center">
+          <a
+            href="#works"
+            class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+          >
+            <i class="fa-solid fa-arrow-right text-xs"></i> WORKS
+          </a>
+          <div class="absolute top-full left-0 mt-2 ml-[-35px] w-40 text-center bg-black/90 backdrop-blur-md border border-white/10 shadow-2xl opacity-0 invisible translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50">
+            <div class="py-2">
+              <a href="Study Quest/index.html" class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0">
+                Study Quest
+              </a>
+              <a href="Matchmates/index.html" class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0">
+                MatchMates
+              </a>
+              <a href="AR Shopping/AR Shopping - Variation 2 (1).html" class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase last:border-0">
+                Pantrii
+              </a>
+            </div>
+          </div>
+        </div>
+        <a
+          href="Contact Page - Variation 2.html"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> CONTACT
+        </a>
+      </div>
+
+      <button class="md:hidden text-white hover:text-volt focus:outline-none">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </nav>
 
         <!-- Main Content Wrapper -->
         <main class="flex-grow flex flex-col">

@@ -28,6 +28,7 @@
                 pink: "#ff2d55",
                 purple: "#5856d6",
                 blue: "#007aff",
+                volt: '#9b8fc9',
               },
             },
             fontFamily: {
@@ -99,65 +100,59 @@
   <body class="w-full min-h-screen overflow-x-hidden">
     <!-- Navigation -->
     <nav
-      id="navbar"
-      class="fixed w-full z-50 top-0 transition-all duration-300 bg-brand-black/80 backdrop-blur-md border-b border-white/10"
+      id="navigation"
+      class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-dark px-6 py-4 flex justify-between items-center transition-all duration-300"
     >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-          <a href="#hero" class="flex-shrink-0 flex items-center gap-3 cursor-pointer">
-            <div
+      <div class="flex items-center gap-4">
+        <div
               class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-black font-bold font-serif text-xl"
             >
               S
             </div>
-            <span
-              class="font-serif text-xl font-semibold tracking-wide text-white"
-              >StudyQuest</span
-            >
-          </a>
-          <div class="hidden md:flex space-x-8 items-center">
-            <a
-              href="#hero"
-              class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >Home</a
-            >
-            <a
-              href="#research"
-              class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >Research</a
-            >
-            <a
-              href="#problem"
-              class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >Problem</a
-            >
-            <a
-              href="#themes"
-              class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >Design</a
-            >
-            <a
-              href="#results"
-              class="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >Results</a
-            >
-          </div>
-          <div class="hidden md:flex items-center space-x-4">
-            <a href="#footer"
+        <span
+          class="text-white text-2xl font-bold cursor-pointer hover:text-grey-400 hover:transform-scale(1.5) headline tracking-tighter"
+          >StudyQuest</span
+        >
+      </div>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a
+          href="#research"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> RESEARCH
+        </a>
+        <a
+          href="#problem"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> PROBLEM
+        </a>
+        <a
+          href="#design"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> DESIGN
+        </a>
+        <a
+          href="#results"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> RESULTS
+        </a>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-4">
+            <button
               class="px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium hover:bg-white hover:text-black transition-all"
             >
               Get in touch
-            </a>
-          </div>
-          <div class="md:hidden flex items-center">
-            <button
-              class="text-white hover:text-gray-300 focus:outline-none p-2"
-            >
-              <i class="fa-solid fa-bars text-2xl"></i>
             </button>
           </div>
-        </div>
-      </div>
+
+      <button class="md:hidden text-white hover:text-volt focus:outline-none">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
     </nav>
 
     <!-- 1. HERO SECTION -->

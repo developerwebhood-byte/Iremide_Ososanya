@@ -30,6 +30,7 @@
                         'earth-900': '#2D2A26',
                         'accent-sage': '#A3B8A8',
                         'accent-sand': '#DDBA9A',
+                        'volt': '#9b8fc9',
                     },
                     backgroundImage: {
                         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -96,26 +97,56 @@
 <body class="w-full min-h-screen m-0 p-0 antialiased selection:bg-accent-sage selection:text-white">
 
     <!-- Navigation -->
-    <nav id="header" class="fixed w-full z-50 bg-earth-100/80 backdrop-blur-md border-b border-earth-200/50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="font-serif text-2xl tracking-widest text-earth-900">PANTRII</a>
-                </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#case-study" class="text-sm font-medium text-earth-800 hover:text-accent-sage transition-colors">Case Study</a>
-                    <a href="#process" class="text-sm font-medium text-earth-800 hover:text-accent-sage transition-colors">Process</a>
-                    <a href="#solution" class="text-sm font-medium text-earth-800 hover:text-accent-sage transition-colors">Solution</a>
-                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-earth-900 text-white text-sm font-medium hover:bg-earth-800 transition-colors">Get in touch</a>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button class="text-earth-900 hover:text-accent-sage focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
+     <nav
+      id="navigation"
+      class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-dark px-6 py-4 flex justify-between items-center transition-all duration-300"
+    >
+      <div class="flex items-center gap-4">
+        <div
+              class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-black font-bold font-serif text-xl"
+            >
+              P
             </div>
-        </div>
+        <span
+          class="text-white text-2xl font-bold cursor-pointer hover:text-grey-400 hover:transform-scale(1.5) headline tracking-tighter"
+          >Pantrii</span
+        >
+      </div>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a
+          href="#problem"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> CASE STUDY
+        </a>
+        <a
+          href="#design"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> PROCESS
+        </a>
+        <a
+          href="#results"
+          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+        >
+          <i class="fa-solid fa-arrow-right text-xs"></i> SOLUTION
+        </a>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-4">
+            <button
+              class="px-5 py-2.5 text-white rounded-full border border-white/20 text-sm font-medium hover:bg-white hover:text-black transition-all"
+            >
+              Get in touch
+            </button>
+          </div>
+
+      <button class="md:hidden text-white hover:text-volt focus:outline-none">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
     </nav>
+
 
     <!-- 1. HERO SECTION -->
     <section id="hero" class="relative w-full min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-organic">
@@ -128,13 +159,6 @@
             <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
                 
                 <div class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left">
-                    <div class="fade-in-up inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm border border-earth-200 mb-8 shadow-sm">
-                        <span class="text-xs font-medium text-earth-800 tracking-wider uppercase">Project</span>
-                        <span class="w-1 h-1 rounded-full bg-earth-400"></span>
-                        <span class="text-xs font-medium text-earth-800 tracking-wider uppercase">UX/UI Design</span>
-                        <span class="w-1 h-1 rounded-full bg-earth-400"></span>
-                        <span class="text-xs font-medium text-earth-800 tracking-wider uppercase">2023</span>
-                    </div>
 
                     <h1 class="fade-in-up delay-100 font-serif text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-earth-900 tracking-widest mb-2 leading-none">
                         Pantrii
