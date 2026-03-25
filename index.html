@@ -1,121 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en" style="scroll-behavior: smooth">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iremide Ososanya - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'off-white': '#F5F5F0',
-                        'charcoal': '#121212',
-                        'accent-green': '#00D4C1',
-                        'volt': '#9b8fc9',
-                        'dark-blue': '#243447',
-                        'light-gray': '#F5F6F8',
-                        'med-gray': '#9CA2A1'
-                    },
-                    fontFamily: {
-                        'serif': ['"Playfair Display"', 'serif'],
-                        'mono': ['"Courier Prime"', 'monospace'],
-                        'sans': ['"Inter"', 'sans-serif']
-                    },
-                    backgroundImage: {
-                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')"
-                    }
-                }
-            }
-        }
+      window.FontAwesomeConfig = { autoReplaceSvg: "nest" };
+    </script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "off-white": "#F5F5F0",
+              charcoal: "#121212",
+              "accent-green": "#00D4C1",
+              volt: "#ff8aac",
+              "dark-blue": "#243447",
+              "light-gray": "#F5F6F8",
+              "med-gray": "#9CA2A1",
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', "serif"],
+              mono: ['"Courier Prime"', "monospace"],
+              sans: ['"Inter"', "sans-serif"],
+            },
+            backgroundImage: {
+              noise:
+                "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+            },
+          },
+        },
+      };
     </script>
     <style>
-        body {
-            background-color: #F5F5F0;
-            color: #121212;
-            -webkit-font-smoothing: antialiased;
-        }
-        .nav-link {
-            position: relative;
-            text-decoration: none;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 1px;
-            bottom: 0;
-            left: 0;
-            background-color: #121212;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-out;
-        }
-        .nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-        
-        .project-row {
-            transition: all 0.3s ease;
-        }
-        .project-row:hover {
-            background-color: #EAEAEA;
-        }
-        .project-line {
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-        .project-row:hover .project-line {
-            transform: scaleX(1);
-        }
-        
-        .thumbnail {
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        .project-row:hover .thumbnail {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      body {
+        background-color: #f5f5f0;
+        color: #121212;
+        -webkit-font-smoothing: antialiased;
+      }
+      .nav-link {
+        position: relative;
+        text-decoration: none;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: #121212;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
 
-        /* Hide scrollbar for clean look */
-        ::-webkit-scrollbar {
-            width: 8px;
+      .project-row {
+        transition: all 0.3s ease;
+      }
+      .project-row:hover {
+        background-color: #eaeaea;
+      }
+      .project-line {
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .project-row:hover .project-line {
+        transform: scaleX(1);
+      }
+
+      .thumbnail {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+      .project-row:hover .thumbnail {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hide scrollbar for clean look */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f5f5f0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #d1d1d1;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a0a0a0;
+      }
+
+      /* Mobile Menu Overlay */
+      #mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #mobile-menu.open {
+        transform: translateX(0);
+      }
+
+      /* Responsive hero text */
+      @media (max-width: 640px) {
+        .hero-name {
+          font-size: clamp(3.5rem, 18vw, 6rem);
         }
-        ::-webkit-scrollbar-track {
-            background: #F5F5F0; 
+        .hero-offset {
+          margin-left: 1rem;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #D1D1D1; 
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #A0A0A0; 
-        }
+      }
     </style>
-</head>
-<body class="w-full min-h-screen relative bg-noise font-sans overflow-x-hidden">
-
+  </head>
+  <body
+    class="w-full min-h-screen relative bg-noise font-sans overflow-x-hidden"
+  >
     <!-- HEADER -->
     <nav
       id="navigation"
       class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-dark px-6 py-4 flex justify-between items-center transition-all duration-300"
     >
       <div class="flex items-center gap-4">
-        <span
+        <a
+          href="/index.html"
           class="text-white text-2xl font-bold cursor-pointer hover:text-grey-400 hover:transform-scale(1.5) headline tracking-tighter"
-          >Iremide Ososanya</span
+          >Iremide Ososanya</a
         >
       </div>
 
@@ -139,15 +173,26 @@
           >
             <i class="fa-solid fa-arrow-right text-xs"></i> WORKS
           </a>
-          <div class="absolute top-full left-0 mt-2 ml-[-35px] w-40 text-center bg-black/90 backdrop-blur-md border border-white/10 shadow-2xl opacity-0 invisible translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50">
+          <div
+            class="absolute top-full left-0 mt-2 ml-[-35px] w-40 text-center bg-black/90 backdrop-blur-md border border-white/10 shadow-2xl opacity-0 invisible translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50"
+          >
             <div class="py-2">
-              <a href="Study Quest/index.html" class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0">
+              <a
+                href="Study Quest/index.html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0"
+              >
                 Study Quest
               </a>
-              <a href="Matchmates/index.html" class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0">
+              <a
+                href="Matchmates/index.html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0"
+              >
                 MatchMates
               </a>
-              <a href="AR Shopping/AR Shopping - Variation 2 (1).html" class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase last:border-0">
+              <a
+                href="AR Shopping/AR Shopping - Variation 2 (1).html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase last:border-0"
+              >
                 Pantrii
               </a>
             </div>
@@ -161,132 +206,270 @@
         </a>
       </div>
 
-      <button class="md:hidden text-white hover:text-volt focus:outline-none">
-        <i class="fa-solid fa-bars text-2xl"></i>
+      <button
+        id="menu-toggle"
+        class="md:hidden text-white hover:text-volt focus:outline-none"
+        aria-label="Open menu"
+      >
+        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
       </button>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10 md:hidden"
+      aria-hidden="true"
+    >
+      <a
+        href="index.html"
+        onclick="closeMobileMenu()"
+        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3"
+      >
+        <i class="fa-solid fa-arrow-right text-sm"></i> HOME
+      </a>
+      <a
+        href="About Page 2 - Variation 1 (1).html"
+        onclick="closeMobileMenu()"
+        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3"
+      >
+        <i class="fa-solid fa-arrow-right text-sm"></i> ABOUT
+      </a>
+      <a
+        href="#works"
+        onclick="closeMobileMenu()"
+        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3"
+      >
+        <i class="fa-solid fa-arrow-right text-sm"></i> WORKS
+      </a>
+      <a
+        href="Contact Page - Variation 2.html"
+        onclick="closeMobileMenu()"
+        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3"
+      >
+        <i class="fa-solid fa-arrow-right text-sm"></i> CONTACT
+      </a>
+    </div>
 
     <!-- HERO SECTION -->
-    <section id="hero" class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 min-h-[90vh] flex flex-col justify-center border-b border-gray-300">
-        <div class="max-w-7xl mx-auto w-full relative z-10">
-
-            <!-- Main Typography -->
-            <div class="relative">
-                <h1 class="font-serif text-6xl md:text-8xl lg:text-[10rem] leading-[0.9] tracking-tighter w-full lg:w-[85%]">
-                    <span class="block text-gray-400 italic font-light ml-4 md:ml-12 mb-2">Hello, I'm</span>
-                    <span class="block font-bold text-charcoal">Iremide</span>
-                    <span class="block font-bold text-charcoal ml-8 md:ml-24">Ososanya</span>
-                </h1>
-                
-            </div>
-
-            <!-- Description -->
-            <div class="mt-16 md:mt-24 w-full md:w-1/2 lg:w-1/3 ml-auto mr-4 md:mr-12">
-                <p class="font-mono text-sm leading-relaxed text-gray-700 text-justify">
-                    Operating at the intersection of stark minimalism and functional complexity. Based in Canada, I craft digital experiences that borrow heavily from editorial print design—prioritizing aggressive typography, deliberate asymmetry, and uncompromised structural integrity over fleeting trends.
-                </p>
-            </div>
+    <section
+      id="hero"
+      class="relative pt-32 pb-20 md:pt-30 md:pb-32 px-6 min-h-[90vh] flex flex-col justify-center border-b border-gray-300"
+    >
+      <div class="max-w-7xl mx-auto w-full relative z-10">
+        <!-- Main Typography -->
+        <div class="flex flex-col-2">
+          <div class="relative">
+            <h1
+              class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] leading-[0.9] tracking-tighter w-full lg:w-[85%] hero-name"
+            >
+              <span
+                class="block text-gray-400 italic font-light ml-2 sm:ml-4 md:ml-12 mb-2 text-3xl sm:text-5xl md:text-7xl lg:text-8xl"
+                >Hello, I'm</span
+              >
+              <span class="block font-bold text-charcoal">Iremide</span>
+              <span
+                class="block font-bold text-[#ff8aac] hero-offset ml-4 sm:ml-8 md:ml-24"
+                >Ososanya</span
+              >
+            </h1>
+          </div>
+          <div class="">
+            <img src="images/Iremide Ososanya homepage doodle.png" alt="" />
+          </div>
         </div>
 
-        <!-- Abstract Background Element -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl opacity-10 pointer-events-none z-0 flex items-center justify-center">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                <path fill="none" stroke="#000" stroke-width="0.5" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.3,-46.3C90.8,-33.5,96.8,-18,95.5,-3.1C94.2,11.8,85.6,26.1,75.2,38.4C64.8,50.7,52.6,61,39.1,68.6C25.6,76.2,10.8,81.1,-4.2,87.6C-19.2,94.1,-34.4,102.2,-47.1,96.5C-59.8,90.8,-70.1,71.3,-78.5,53.4C-86.9,35.5,-93.4,19.2,-91.3,4.1C-89.2,-11,-78.5,-24.9,-68.8,-37.6C-59.1,-50.3,-50.4,-61.8,-39,-70.5C-27.6,-79.2,-13.8,-85.1,1.1,-86.8C16,-88.5,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100) scale(1.1)" />
-                <path fill="none" stroke="#000" stroke-width="0.2" d="M38.1,-63.6C50.6,-56.3,62.8,-48.5,71.5,-37.8C80.2,-27.1,85.4,-13.5,84.4,-0.6C83.4,12.3,76.2,24.6,67.3,35.1C58.4,45.6,47.8,54.3,36,60.8C24.2,67.3,11.2,71.6,-1.7,74.5C-14.6,77.4,-27.4,78.9,-38.7,73.5C-50,68.1,-59.8,55.8,-67.2,42.5C-74.6,29.2,-79.6,14.9,-78.8,1C-78,-12.9,-71.4,-26.3,-63.3,-38.2C-55.2,-50.1,-45.6,-60.5,-34.2,-67.5C-22.8,-74.5,-9.6,-78.1,2.8,-82.5C15.2,-86.9,25.6,-70.9,38.1,-63.6Z" transform="translate(100 100)" />
-            </svg>
+        <!-- Description -->
+        <div
+          class="mt-16 md:mt-24 w-full md:w-1/2 lg:w-1/3 ml-auto mr-4 md:mr-12"
+        >
+          <p
+            class="font-mono text-sm leading-relaxed text-gray-700 text-justify"
+          >
+            Operating at the intersection of stark minimalism and functional
+            complexity. Based in Canada, I craft digital experiences that borrow
+            heavily from editorial print design—prioritizing aggressive
+            typography, deliberate asymmetry, and uncompromised structural
+            integrity over fleeting trends.
+          </p>
         </div>
+      </div>
+
+      <!-- Abstract Background Element -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl opacity-10 pointer-events-none z-0 flex items-center justify-center"
+      >
+        <svg
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-full h-full"
+        >
+          <path
+            fill="none"
+            stroke="#000"
+            stroke-width="0.5"
+            d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,81.3,-46.3C90.8,-33.5,96.8,-18,95.5,-3.1C94.2,11.8,85.6,26.1,75.2,38.4C64.8,50.7,52.6,61,39.1,68.6C25.6,76.2,10.8,81.1,-4.2,87.6C-19.2,94.1,-34.4,102.2,-47.1,96.5C-59.8,90.8,-70.1,71.3,-78.5,53.4C-86.9,35.5,-93.4,19.2,-91.3,4.1C-89.2,-11,-78.5,-24.9,-68.8,-37.6C-59.1,-50.3,-50.4,-61.8,-39,-70.5C-27.6,-79.2,-13.8,-85.1,1.1,-86.8C16,-88.5,30.6,-83.6,44.7,-76.4Z"
+            transform="translate(100 100) scale(1.1)"
+          />
+          <path
+            fill="none"
+            stroke="#000"
+            stroke-width="0.2"
+            d="M38.1,-63.6C50.6,-56.3,62.8,-48.5,71.5,-37.8C80.2,-27.1,85.4,-13.5,84.4,-0.6C83.4,12.3,76.2,24.6,67.3,35.1C58.4,45.6,47.8,54.3,36,60.8C24.2,67.3,11.2,71.6,-1.7,74.5C-14.6,77.4,-27.4,78.9,-38.7,73.5C-50,68.1,-59.8,55.8,-67.2,42.5C-74.6,29.2,-79.6,14.9,-78.8,1C-78,-12.9,-71.4,-26.3,-63.3,-38.2C-55.2,-50.1,-45.6,-60.5,-34.2,-67.5C-22.8,-74.5,-9.6,-78.1,2.8,-82.5C15.2,-86.9,25.6,-70.9,38.1,-63.6Z"
+            transform="translate(100 100)"
+          />
+        </svg>
+      </div>
     </section>
 
     <!-- SELECTED WORK SECTION -->
     <section id="works" class="py-32 bg-off-white relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-24">
-                <h2 class="font-serif text-4xl md:text-5xl italic text-gray-400">Selected Works</h2>
-            </div>
-
-            <div class="flex flex-col border-t border-black">
-                
-                <!-- Project 1 -->
-                <a href="Study Quest/index.html" class="project-row relative py-16 md:py-24 border-b border-gray-300 group cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between px-4 md:px-8">
-                    <div class="w-full md:w-auto z-10">
-                        <h3 class="font-serif text-5xl md:text-7xl font-bold tracking-tight text-charcoal group-hover:italic transition-all duration-300">StudyQuest</h3>
-                    </div>
-                    
-                    <div class="hidden md:block flex-grow mx-8 relative h-[1px] z-0">
-                        <div class="project-line absolute inset-0 bg-black"></div>
-                    </div>
-                    
-                    <div class="mt-6 md:mt-0 z-10 text-left md:text-right">
-                        <p class="font-mono text-sm uppercase tracking-widest">UX/UI Case Study</p>
-                        <p class="font-sans text-xs text-gray-500 mt-2">EdTech Platform</p>
-                    </div>
-
-                    <!-- Hover Image -->
-                    <div class="thumbnail absolute top-1/2 left-[455px] -translate-x-1/2 -translate-y-1/2 w-90 h-72 z-20 hidden md:block">
-                        <img class="w-full h-full object-cover opacity-80" src="images/StudyQuest.png" alt="Abstract minimalist UI dashboard wireframe, high contrast black and white print style" />
-                    </div>
-                </a>
-
-                <!-- Project 2 -->
-                <a href="Matchmates/index.html" class="project-row relative py-16 md:py-24 border-b border-gray-300 group cursor-pointer flex flex-col md:flex-row-reverse items-start md:items-center justify-between px-4 md:px-8">
-                    <div class="w-full md:w-auto z-10 text-left md:text-right">
-                        <h3 class="font-serif text-5xl md:text-7xl font-bold tracking-tight text-charcoal group-hover:italic transition-all duration-300">MatchMates</h3>
-                    </div>
-                    
-                    <div class="hidden md:block flex-grow mx-8 relative h-[1px] z-0">
-                        <div class="project-line absolute inset-0 bg-black origin-right"></div>
-                    </div>
-                    
-                    <div class="mt-6 md:mt-0 z-10 text-left">
-                        <p class="font-mono text-sm uppercase tracking-widest">Product Design</p>
-                        <p class="font-sans text-xs text-gray-500 mt-2">Social Networking</p>
-                    </div>
-
-                    <!-- Hover Image -->
-                    <div class="thumbnail absolute top-1/2 right-[470px] -translate-x-1/2 -translate-y-1/2 w-90 h-72 z-20 hidden md:block">
-                        <img class="w-full h-full object-cover opacity-80" src="images/Matchmates.png" alt="Minimalist mobile app screens laid out asymmetrically, editorial style, grayscale" />
-                    </div>
-                </a>
-
-                <!-- Project 3 -->
-                <a href="AR Shopping - Variation 2 (1).html" class="project-row relative py-16 md:py-24 border-b border-black group cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between px-4 md:px-8">
-                    <div class="w-full md:w-auto z-10">
-                        <h3 class="font-serif text-5xl md:text-7xl font-bold tracking-tight text-charcoal group-hover:italic transition-all duration-300">Pantrii</h3>
-                    </div>
-                    
-                    <div class="hidden md:block flex-grow mx-8 relative h-[1px] z-0">
-                        <div class="project-line absolute inset-0 bg-black"></div>
-                    </div>
-                    
-                    <div class="mt-6 md:mt-0 z-10 text-left md:text-right">
-                        <p class="font-mono text-sm uppercase tracking-widest">Shopping Page</p>
-                        <p class="font-sans text-xs text-gray-500 mt-2">E-Commerce</p>
-                    </div>
-
-                    <!-- Hover Image -->
-                    <div class="thumbnail absolute top-1/2 left-[400px] -translate-x-1/2 -translate-y-1/2 w-90 h-72 z-20 hidden md:block">
-                        <img class="w-full h-full object-cover opacity-80" src="images/Pantrii.png" alt="Complex financial dashboard UI, stark typography, data visualization, monochrome" />
-                    </div>
-                </a>
-
-            </div>
-            
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-end mb-24">
+          <h2 class="font-serif text-4xl md:text-5xl italic text-gray-400">
+            Selected Works
+          </h2>
         </div>
+
+        <div class="flex flex-col border-t border-black">
+          <!-- Project 1 -->
+          <a
+            href="Study Quest/index.html"
+            class="project-row relative py-16 md:py-24 border-b border-gray-300 group cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between px-4 md:px-8"
+          >
+            <div class="w-full md:w-auto z-10">
+              <h3
+                class="font-serif text-5xl md:text-7xl font-bold tracking-tight text-charcoal group-hover:italic transition-all duration-300"
+              >
+                StudyQuest
+              </h3>
+            </div>
+
+            <div class="hidden md:block flex-grow mx-8 relative h-[1px] z-0">
+              <div class="project-line absolute inset-0 bg-black"></div>
+            </div>
+
+            <div class="mt-6 md:mt-0 z-10 text-left md:text-right">
+              <p class="font-mono text-sm uppercase tracking-widest">
+                UX/UI Case Study
+              </p>
+              <p class="font-sans text-xs text-gray-500 mt-2">
+                EdTech Platform
+              </p>
+            </div>
+
+            <!-- Hover Image -->
+            <div
+              class="thumbnail absolute top-1/2 left-[455px] -translate-x-1/2 -translate-y-1/2 w-90 h-72 z-20 hidden md:block"
+            >
+              <img
+                class="w-full h-full object-cover opacity-80"
+                src="images/StudyQuest.png"
+                alt="Abstract minimalist UI dashboard wireframe, high contrast black and white print style"
+              />
+            </div>
+          </a>
+
+          <!-- Project 2 -->
+          <a
+            href="Matchmates/index.html"
+            class="project-row relative py-16 md:py-24 border-b border-gray-300 group cursor-pointer flex flex-col md:flex-row-reverse items-start md:items-center justify-between px-4 md:px-8"
+          >
+            <div class="w-full md:w-auto z-10 text-left md:text-right">
+              <h3
+                class="font-serif text-5xl md:text-7xl font-bold tracking-tight text-charcoal group-hover:italic transition-all duration-300"
+              >
+                MatchMates
+              </h3>
+            </div>
+
+            <div class="hidden md:block flex-grow mx-8 relative h-[1px] z-0">
+              <div
+                class="project-line absolute inset-0 bg-black origin-right"
+              ></div>
+            </div>
+
+            <div class="mt-6 md:mt-0 z-10 text-left">
+              <p class="font-mono text-sm uppercase tracking-widest">
+                Product Design
+              </p>
+              <p class="font-sans text-xs text-gray-500 mt-2">
+                Social Networking
+              </p>
+            </div>
+
+            <!-- Hover Image -->
+            <div
+              class="thumbnail absolute top-1/2 right-[470px] -translate-x-1/2 -translate-y-1/2 w-90 h-72 z-20 hidden md:block"
+            >
+              <img
+                class="w-full h-full object-cover opacity-80"
+                src="images/Matchmates.png"
+                alt="Minimalist mobile app screens laid out asymmetrically, editorial style, grayscale"
+              />
+            </div>
+          </a>
+
+          <!-- Project 3 -->
+          <a
+            href="AR Shopping/AR Shopping - Variation 2 (1).html"
+            class="project-row relative py-16 md:py-24 border-b border-black group cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between px-4 md:px-8"
+          >
+            <div class="w-full md:w-auto z-10">
+              <h3
+                class="font-serif text-5xl md:text-7xl font-bold tracking-tight text-charcoal group-hover:italic transition-all duration-300"
+              >
+                Pantrii
+              </h3>
+            </div>
+
+            <div class="hidden md:block flex-grow mx-8 relative h-[1px] z-0">
+              <div class="project-line absolute inset-0 bg-black"></div>
+            </div>
+
+            <div class="mt-6 md:mt-0 z-10 text-left md:text-right">
+              <p class="font-mono text-sm uppercase tracking-widest">
+                Shopping Page
+              </p>
+              <p class="font-sans text-xs text-gray-500 mt-2">E-Commerce</p>
+            </div>
+
+            <!-- Hover Image -->
+            <div
+              class="thumbnail absolute top-1/2 left-[400px] -translate-x-1/2 -translate-y-1/2 w-90 h-72 z-20 hidden md:block"
+            >
+              <img
+                class="w-full h-full object-cover opacity-80"
+                src="images/Pantrii.png"
+                alt="Complex financial dashboard UI, stark typography, data visualization, monochrome"
+              />
+            </div>
+          </a>
+        </div>
+      </div>
     </section>
 
-
     <!-- MINIMAL CTA SECTION -->
-    <section id="contact" class="py-40 bg-charcoal text-white flex items-center justify-center text-center px-6">
-        <div class="max-w-4xl mx-auto w-full">
-            <h2 class="font-serif text-5xl md:text-7xl lg:text-8xl mb-12 leading-tight">
-                Let's build<br>something<br><span class="italic text-gray-400">meaningful.</span>
-            </h2>
-            
-            <a href="Contact Page - Variation 2.html" class="inline-block bg-white text-charcoal font-sans font-bold text-sm uppercase tracking-widest py-5 px-10 hover:bg-gray-200 transition-colors duration-300 rounded-none">
-                Get in Touch
-            </a>
-        </div>
+    <section
+      id="contact"
+      class="py-40 bg-charcoal text-white flex items-center justify-center text-center px-6"
+    >
+      <div class="max-w-4xl mx-auto w-full">
+        <h2
+          class="font-serif text-5xl md:text-7xl lg:text-8xl mb-12 leading-tight"
+        >
+          Let's build<br />something<br /><span class="italic text-gray-400"
+            >meaningful.</span
+          >
+        </h2>
+
+        <a
+          href="Contact Page - Variation 2.html"
+          class="inline-block bg-white text-charcoal font-sans font-bold text-sm uppercase tracking-widest py-5 px-10 hover:bg-gray-200 transition-colors duration-300 rounded-none"
+        >
+          Get in Touch
+        </a>
+      </div>
     </section>
 
     <!-- Footer -->
@@ -295,11 +478,15 @@
       class="py-16 bg-[#050505] border-t border-white/5 text-center"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="font-serif text-2xl md:text-3xl font-bold text-white mb-4 uppercase tracking-widest">
-            Iremide Ososanya
+        <h2
+          class="font-serif text-2xl md:text-3xl font-bold text-white mb-4 uppercase tracking-widest"
+        >
+          Iremide Ososanya
         </h2>
-        <div class="font-mono text-xs uppercase tracking-widest text-gray-500 mb-8">
-            Based in Canada
+        <div
+          class="font-mono text-xs uppercase tracking-widest text-gray-500 mb-8"
+        >
+          Based in Canada
         </div>
         <p class="text-gray-500 text-sm">
           © 2026 Iremide Ososanya. All rights reserved.
@@ -307,5 +494,33 @@
       </div>
     </footer>
 
-</body>
+    <script>
+      // Mobile menu toggle
+      const toggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+
+      toggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.contains("open");
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          mobileMenu.classList.add("open");
+          mobileMenu.setAttribute("aria-hidden", "false");
+          menuIcon.className = "fa-solid fa-xmark text-2xl";
+        }
+      });
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove("open");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        menuIcon.className = "fa-solid fa-bars text-2xl";
+      }
+
+      // Close mobile menu on desktop resize
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) closeMobileMenu();
+      });
+    </script>
+  </body>
 </html>

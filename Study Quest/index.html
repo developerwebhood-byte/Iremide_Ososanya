@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth">
   <head>
     <script>
       window.FontAwesomeConfig = {
@@ -28,7 +28,7 @@
                 pink: "#ff2d55",
                 purple: "#5856d6",
                 blue: "#007aff",
-                volt: '#9b8fc9',
+                volt: "#ff8aac",
               },
             },
             fontFamily: {
@@ -95,6 +95,14 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #555;
       }
+      /* Mobile Menu */
+      #mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #mobile-menu.open {
+        transform: translateX(0);
+      }
     </style>
   </head>
   <body class="w-full min-h-screen overflow-x-hidden">
@@ -104,56 +112,110 @@
       class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-dark px-6 py-4 flex justify-between items-center transition-all duration-300"
     >
       <div class="flex items-center gap-4">
-        <div
-              class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-black font-bold font-serif text-xl"
-            >
-              S
-            </div>
-        <span
+        <a
+          href="/index.html"
           class="text-white text-2xl font-bold cursor-pointer hover:text-grey-400 hover:transform-scale(1.5) headline tracking-tighter"
-          >StudyQuest</span
+          >Iremide Ososanya</a
         >
       </div>
 
       <div class="hidden md:flex items-center space-x-8">
         <a
-          href="#research"
+          href="/index.html"
           class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
         >
-          <i class="fa-solid fa-arrow-right text-xs"></i> RESEARCH
+          <i class="fa-solid fa-arrow-right text-xs"></i> HOME
         </a>
         <a
-          href="#problem"
+          href="/About Page 2 - Variation 1 (1).html"
           class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
         >
-          <i class="fa-solid fa-arrow-right text-xs"></i> PROBLEM
+          <i class="fa-solid fa-arrow-right text-xs"></i> ABOUT
         </a>
+        <div class="relative group h-full flex items-center">
+          <a
+            href="#works"
+            class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+          >
+            <i class="fa-solid fa-arrow-right text-xs"></i> WORKS
+          </a>
+          <div
+            class="absolute top-full left-0 mt-2 ml-[-35px] w-40 text-center bg-black/90 backdrop-blur-md border border-white/10 shadow-2xl opacity-0 invisible translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50"
+          >
+            <div class="py-2">
+              <a
+                href="/Study Quest/index.html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0"
+              >
+                Study Quest
+              </a>
+              <a
+                href="/Matchmates/index.html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0"
+              >
+                MatchMates
+              </a>
+              <a
+                href="/AR Shopping/AR Shopping - Variation 2 (1).html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt hover:bg-white/5 transition-colors uppercase last:border-0"
+              >
+                Pantrii
+              </a>
+            </div>
+          </div>
+        </div>
         <a
-          href="#design"
+          href="/Contact Page - Variation 2.html"
           class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
         >
-          <i class="fa-solid fa-arrow-right text-xs"></i> DESIGN
-        </a>
-        <a
-          href="#results"
-          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
-        >
-          <i class="fa-solid fa-arrow-right text-xs"></i> RESULTS
+          <i class="fa-solid fa-arrow-right text-xs"></i> CONTACT
         </a>
       </div>
 
-      <div class="hidden md:flex items-center space-x-4">
-            <button
-              class="px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium hover:bg-white hover:text-black transition-all"
-            >
-              Get in touch
-            </button>
-          </div>
-
-      <button class="md:hidden text-white hover:text-volt focus:outline-none">
-        <i class="fa-solid fa-bars text-2xl"></i>
+      <button
+        id="menu-toggle"
+        class="md:hidden text-white hover:text-volt focus:outline-none"
+        aria-label="Open menu"
+      >
+        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
       </button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10 md:hidden"
+      aria-hidden="true"
+    >
+      <a
+        href="index.html"
+        onclick="closeMobileMenu()"
+        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3"
+      >
+        <i class="fa-solid fa-arrow-right text-sm"></i> HOME
+      </a>
+      <a
+        href="About Page 2 - Variation 1 (1).html"
+        onclick="closeMobileMenu()"
+        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3"
+      >
+        <i class="fa-solid fa-arrow-right text-sm"></i> ABOUT
+      </a>
+      <a
+        href="#works"
+        onclick="closeMobileMenu()"
+        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3"
+      >
+        <i class="fa-solid fa-arrow-right text-sm"></i> WORKS
+      </a>
+      <a
+        href="Contact Page - Variation 2.html"
+        onclick="closeMobileMenu()"
+        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3"
+      >
+        <i class="fa-solid fa-arrow-right text-sm"></i> CONTACT
+      </a>
+    </div>
 
     <!-- 1. HERO SECTION -->
     <section
@@ -368,22 +430,22 @@
       </div>
 
       <div
-        class="max-w-7xl mx-auto flex flex-row gap-10 px-4 sm:px-6 lg:px-8 relative z-10 text-left"
+        class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 px-4 sm:px-6 lg:px-8 relative z-10 text-left"
       >
         <div
-          class="w-3/5 bg-black/40 backdrop-blur-xl border border-white/10 p-5 md:p-5 rounded-3xl shadow-2xl"
+          class="w-full lg:w-3/5 bg-black/40 backdrop-blur-xl border border-white/10 p-5 rounded-3xl shadow-2xl"
         >
-          <img src="Images/problem.png" alt="Problem" />
+          <img src="Images/problem.png" alt="Problem" class="w-full h-auto" />
         </div>
 
-        <div class="w-2/5 text-justify">
+        <div class="w-full lg:w-2/5 text-justify">
           <h3
             class="text-sm font-bold tracking-widest uppercase text-white/60 mb-8"
           >
             03 / Problem Statement
           </h3>
           <h2
-            class="text-5xl md:text-7xl font-serif font-bold text-white mb-12 leading-tight"
+            class="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-12 leading-tight"
           >
             Problem Statement
           </h2>
@@ -410,16 +472,16 @@
       </div>
 
       <div
-        class="max-w-7xl mx-auto flex flex-row gap-10 px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+        class="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row gap-10 px-4 sm:px-6 lg:px-8 relative z-10 text-left"
       >
-        <div class="w-2/5 text-justify">
+        <div class="w-full lg:w-2/5 text-justify">
           <h3
             class="text-sm font-bold tracking-widest uppercase text-white/60 mb-8"
           >
             04 / User Persona
           </h3>
           <h2
-            class="text-5xl md:text-7xl font-serif font-bold text-white mb-12 leading-tight"
+            class="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-12 leading-tight"
           >
             User Persona
           </h2>
@@ -434,9 +496,9 @@
         </div>
 
         <div
-          class="w-3/5 bg-black/40 backdrop-blur-xl border border-white/10 p-5 md:p-5 rounded-3xl shadow-2xl"
+          class="w-full lg:w-3/5 bg-black/40 backdrop-blur-xl border border-white/10 p-5 rounded-3xl shadow-2xl"
         >
-          <img src="Images/persona.png" alt="Persona" />
+          <img src="Images/persona.png" alt="Persona" class="w-full h-auto" />
         </div>
       </div>
     </section>
@@ -456,22 +518,22 @@
       </div>
 
       <div
-        class="max-w-7xl mx-auto flex flex-row gap-10 px-4 sm:px-6 lg:px-8 relative z-10 text-center"
+        class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 px-4 sm:px-6 lg:px-8 relative z-10 text-left"
       >
         <div
-          class="w-3/5 bg-black/40 backdrop-blur-xl border border-white/10 p-5 md:p-5 rounded-3xl shadow-2xl"
+          class="w-full lg:w-3/5 bg-black/40 backdrop-blur-xl border border-white/10 p-5 rounded-3xl shadow-2xl"
         >
-          <img src="Images/analysis.png" alt="Analysis" />
+          <img src="Images/analysis.png" alt="Analysis" class="w-full h-auto" />
         </div>
 
-        <div class="w-2/5 text-justify">
+        <div class="w-full lg:w-2/5 text-justify">
           <h3
             class="text-sm font-bold tracking-widest uppercase text-white/60 mb-8"
           >
             05 / Competitive Analysis
           </h3>
           <h2
-            class="text-5xl md:text-7xl font-serif font-bold text-white mb-12 leading-tight"
+            class="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-12 leading-tight"
           >
             Competitive Analysis
           </h2>
@@ -504,7 +566,7 @@
         </div>
         <div class="space-y-20">
           <div
-            class="relative grid grid-cols-4 flex content-center justify-center gap-10 items-center"
+            class="relative grid grid-cols-2 md:grid-cols-4 content-center justify-center gap-5 md:gap-10 items-center"
           >
             <!-- Wireframe 1 -->
             <div
@@ -558,7 +620,7 @@
             </div>
           </div>
           <div
-            class="relative grid grid-cols-4 flex content-center justify-center gap-5 items-center"
+            class="relative grid grid-cols-2 md:grid-cols-4 content-center justify-center gap-5 items-center"
           >
             <div
               class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group"
@@ -613,7 +675,7 @@
       </div>
     </section>
 
-    <section id="lofi" class="py-32 gradient-bg-2">
+    <section id="postlofi" class="py-32 gradient-bg-2">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-20">
           <h3
@@ -806,7 +868,8 @@
               ></i>
               Previous
             </span>
-            <span class="text-2xl font-serif font-bold text-white uppercase tracking-widest"
+            <span
+              class="text-2xl font-serif font-bold text-white uppercase tracking-widest"
               >Iremide Ososanya</span
             >
           </a>
@@ -825,7 +888,8 @@
                 class="fa-solid fa-arrow-right group-hover:translate-x-2 transition-transform"
               ></i>
             </span>
-            <span class="text-2xl font-serif font-bold text-white uppercase tracking-widest"
+            <span
+              class="text-2xl font-serif font-bold text-white uppercase tracking-widest"
               >MatchMates</span
             >
           </a>
@@ -915,6 +979,33 @@
           nav.classList.remove("shadow-lg");
           nav.classList.replace("py-2", "py-4");
         }
+      });
+    </script>
+    <script>
+      // Mobile menu toggle
+      const toggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = document.getElementById("menu-icon");
+
+      toggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.contains("open");
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          mobileMenu.classList.add("open");
+          mobileMenu.setAttribute("aria-hidden", "false");
+          menuIcon.className = "fa-solid fa-xmark text-2xl";
+        }
+      });
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove("open");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        menuIcon.className = "fa-solid fa-bars text-2xl";
+      }
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) closeMobileMenu();
       });
     </script>
   </body>

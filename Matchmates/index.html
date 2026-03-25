@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth;">
   <head>
     <script>
       window.FontAwesomeConfig = {
@@ -24,7 +24,9 @@
               "black-light": "#1A1A1A",
               white: "#FFFFFF",
               "off-white": "#F4F4F4",
-              volt: "#9b8fc9",
+              volt: "#5f5eb6",
+              volt2: "#7a4da3",
+              light: "#ff8aac",
               "gray-dark": "#2A2A2A",
               "gray-light": "#E5E5E5",
             },
@@ -96,6 +98,14 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #7c6eb2;
       }
+      /* Mobile Menu Overlay */
+      #mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #mobile-menu.open {
+        transform: translateX(0);
+      }
     </style>
   </head>
   <body
@@ -106,56 +116,87 @@
       id="navigation"
       class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-dark px-6 py-4 flex justify-between items-center transition-all duration-300"
     >
-      <a href="#hero" class="flex items-center gap-4 cursor-pointer">
-        <span
-          class="text-volt text-2xl font-bold hover:text-[#73499e] hover:transform-scale(1.5) headline tracking-tighter"
-          >MATCHMATES</span
+      <div class="flex items-center gap-4">
+        <a
+          href="/index.html"
+          class="text-white text-2xl font-bold cursor-pointer hover:text-grey-400 hover:transform-scale(1.5) headline tracking-tighter"
+          >Iremide Ososanya</a  
         >
-      </a>
+      </div>
 
       <div class="hidden md:flex items-center space-x-8">
         <a
-          href="#hero"
-          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+          href="/index.html"
+          class="text-white hover:text-volt2 text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
         >
-          <i class="fa-solid fa-arrow-right text-xs"></i> CASE STUDY
+          <i class="fa-solid fa-arrow-right text-xs"></i> HOME
         </a>
         <a
-          href="#problem"
-          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+          href="/About Page 2 - Variation 1 (1).html"
+          class="text-white hover:text-volt2 text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
         >
-          <i class="fa-solid fa-arrow-right text-xs"></i> PROBLEM
+          <i class="fa-solid fa-arrow-right text-xs"></i> ABOUT
         </a>
+        <div class="relative group h-full flex items-center">
+          <a
+            href="#works"
+            class="text-white hover:text-volt2 text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+          >
+            <i class="fa-solid fa-arrow-right text-xs"></i> WORKS
+          </a>
+          <div
+            class="absolute top-full left-0 mt-2 ml-[-35px] w-40 text-center bg-black/90 backdrop-blur-md border border-white/10 shadow-2xl opacity-0 invisible translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 z-50"
+          >
+            <div class="py-2">
+              <a
+                href="/Study Quest/index.html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt2 hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0"
+              >
+                Study Quest
+              </a>
+              <a
+                href="/Matchmates/index.html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt2 hover:bg-white/5 transition-colors uppercase border-b border-white/5 last:border-0"
+              >
+                MatchMates
+              </a>
+              <a
+                href="/AR Shopping/AR Shopping - Variation 2 (1).html"
+                class="block px-6 py-4 text-[10px] font-bold tracking-[0.2em] text-white hover:text-volt2 hover:bg-white/5 transition-colors uppercase last:border-0"
+              >
+                Pantrii
+              </a>
+            </div>
+          </div>
+        </div>
         <a
-          href="#pain"
-          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
-        >
-          <i class="fa-solid fa-arrow-right text-xs"></i> PAIN POINTS
-        </a>
-        <a
-          href="#process"
-          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
-        >
-          <i class="fa-solid fa-arrow-right text-xs"></i> PROCESS
-        </a>
-        <a
-          href="#impact"
-          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
-        >
-          <i class="fa-solid fa-arrow-right text-xs"></i> IMPACT
-        </a>
-        <a
-          href="#footer"
-          class="text-white hover:text-volt text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
+          href="/Contact Page - Variation 2.html"
+          class="text-white hover:text-volt2 text-sm font-bold tracking-widest transition-colors flex items-center gap-2"
         >
           <i class="fa-solid fa-arrow-right text-xs"></i> CONTACT
         </a>
       </div>
 
-      <button class="md:hidden text-white hover:text-volt focus:outline-none">
-        <i class="fa-solid fa-bars text-2xl"></i>
+      <button id="menu-toggle" class="md:hidden text-white hover:text-volt2 focus:outline-none" aria-label="Open menu">
+        <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
       </button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10 md:hidden" aria-hidden="true">
+      <a href="index.html" onclick="closeMobileMenu()" class="text-white hover:text-volt2 text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
+        <i class="fa-solid fa-arrow-right text-sm"></i> HOME
+      </a>
+      <a href="About Page 2 - Variation 1 (1).html" onclick="closeMobileMenu()" class="text-white hover:text-volt2 text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
+        <i class="fa-solid fa-arrow-right text-sm"></i> ABOUT
+      </a>
+      <a href="#works" onclick="closeMobileMenu()" class="text-white hover:text-volt2 text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
+        <i class="fa-solid fa-arrow-right text-sm"></i> WORKS
+      </a>
+      <a href="Contact Page - Variation 2.html" onclick="closeMobileMenu()" class="text-white hover:text-volt2 text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
+        <i class="fa-solid fa-arrow-right text-sm"></i> CONTACT
+      </a>
+    </div>
 
     <!-- 1. HERO SECTION -->
     <section
@@ -165,7 +206,7 @@
       <!-- Diagonal Split Background -->
       <div class="absolute inset-0 w-full h-full z-0">
         <div
-          class="absolute inset-0 bg-[#33345b] transform -skew-x-12 origin-top-right scale-125 translate-x-1/3 opacity-50"
+          class="absolute inset-0 bg-volt transform -skew-x-12 origin-top-right scale-125 translate-x-1/3 opacity-50"
         ></div>
       </div>
 
@@ -177,11 +218,11 @@
             class="text-6xl sm:text-8xl lg:text-[9rem] font-bold leading-[0.85] tracking-tighter text-white"
           >
             MATCH<br />
-            <span class="text-volt">MATES</span>
+            <span class="text-volt2">MATES</span>
           </h1>
 
           <p
-            class="text-xl sm:text-2xl font-body text-gray-300 border-l-4 border-volt pl-6 max-w-xl mt-8"
+            class="text-xl sm:text-2xl font-body text-gray-300 border-l-4 border-volt2 pl-6 max-w-xl mt-8"
           >
             ENGINEERING REAL HANGOUTS. THE COORDINATION PLATFORM BUILT FOR
             HIGH-PERFORMANCE SOCIAL LIVES.
@@ -357,7 +398,7 @@
     <!-- 3. UNDERSTANDING THE PAIN (High Impact Strip) -->
     <section
       id="pain"
-      class="w-full bg-volt text-black py-20 border-b-8 border-black"
+      class="w-full bg-volt2 text-black py-20 border-b-8 border-black"
     >
       <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div class="text-center mb-16">
@@ -380,7 +421,7 @@
               <i class="fa-solid fa-magnifying-glass text-8xl"></i>
             </div>
             <div class="relative z-10">
-              <div class="text-volt mb-6">
+              <div class="text-volt2 mb-6">
                 <i class="fa-solid fa-magnifying-glass text-4xl"></i>
               </div>
               <div class="text-6xl font-bold data-text mb-2">
@@ -405,7 +446,7 @@
               <i class="fa-solid fa-shield-halved text-8xl"></i>
             </div>
             <div class="relative z-10">
-              <div class="text-volt mb-6">
+              <div class="text-volt2 mb-6">
                 <i class="fa-solid fa-shield-halved text-4xl"></i>
               </div>
               <div class="text-6xl font-bold data-text mb-2">
@@ -430,7 +471,7 @@
               <i class="fa-solid fa-stopwatch text-8xl"></i>
             </div>
             <div class="relative z-10">
-              <div class="text-volt mb-6">
+              <div class="text-volt2 mb-6">
                 <i class="fa-solid fa-stopwatch text-4xl"></i>
               </div>
               <div class="text-6xl font-bold data-text mb-2">
@@ -451,7 +492,7 @@
     <!-- 4. DESIGN PROCESS (Technical Schematic) -->
     <section
       id="process"
-      class="w-full bg-gradient-to-b from-gray-dark to-black text-white py-24 relative"
+      class="w-full bg-gradient-to-b from-volt to-black text-white py-24 relative"
     >
       <!-- Grid Background -->
       <div
@@ -467,7 +508,7 @@
       <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div class="mb-20 text-center">
           <span
-            class="text-volt text-sm font-bold tracking-[0.3em] data-text block mb-4"
+            class="text-black text-sm font-bold tracking-[0.3em] data-text block mb-4"
             >SYSTEM ARCHITECTURE</span
           >
           <h2 class="text-5xl sm:text-7xl font-bold tracking-tighter uppercase">
@@ -487,7 +528,7 @@
             </div>
 
             <div class="relative z-10 order-2 lg:order-1">
-              <div class="border-l-2 border-volt pl-8 py-4">
+              <div class="border-l-2 border-volt2 pl-8 py-4">
                 <h3 class="text-3xl font-bold mb-4 uppercase tracking-wide">
                   Picture This
                 </h3>
@@ -508,16 +549,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -530,7 +571,7 @@
 
           <!-- Step 02 -->
           <div
-            class="relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+           id="Painpoints" class="relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           >
             <div
               class="absolute right-0 top-0 text-[12rem] font-bold text-white opacity-5 select-none leading-none z-0 text-right w-full"
@@ -543,21 +584,21 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <!-- Annotation Line -->
               <div
-                class="absolute -right-16 top-1/2 w-16 h-px bg-volt hidden lg:block"
+                class="absolute -right-16 top-1/2 w-16 h-px bg-volt2 hidden lg:block"
               ></div>
 
               <img
@@ -568,7 +609,7 @@
             </div>
 
             <div class="relative z-10">
-              <div class="border-l-2 border-volt pl-8 py-4">
+              <div class="border-l-2 border-volt2 pl-8 py-4">
                 <h3 class="text-3xl font-bold mb-4 uppercase tracking-wide">
                   Pain Points
                 </h3>
@@ -596,7 +637,7 @@
             </div>
 
             <div class="relative z-10 order-2 lg:order-1">
-              <div class="border-l-2 border-volt pl-8 py-4">
+              <div class="border-l-2 border-volt2 pl-8 py-4">
                 <h3 class="text-3xl font-bold mb-4 uppercase tracking-wide">
                   Affinity Mapping
                 </h3>
@@ -615,16 +656,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -650,21 +691,21 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <!-- Annotation Line -->
               <div
-                class="absolute -right-16 top-1/2 w-16 h-px bg-volt hidden lg:block"
+                class="absolute -right-16 top-1/2 w-16 h-px bg-volt2 hidden lg:block"
               ></div>
 
               <img
@@ -675,7 +716,7 @@
             </div>
 
             <div class="relative z-10">
-              <div class="border-l-2 border-volt pl-8 py-4">
+              <div class="border-l-2 border-volt2 pl-8 py-4">
                 <h3 class="text-3xl font-bold mb-4 uppercase tracking-wide">
                   Double Diamond
                 </h3>
@@ -711,7 +752,7 @@
       <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div class="mb-20 text-center">
           <span
-            class="text-volt text-sm font-bold tracking-[0.3em] data-text block mb-4"
+            class="text-volt2 text-sm font-bold tracking-[0.3em] data-text block mb-4"
             >LOW-FEDILITY DESIGN</span
           >
           <h2 class="text-5xl sm:text-7xl font-bold tracking-tighter uppercase">
@@ -730,16 +771,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -754,16 +795,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -778,16 +819,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -802,16 +843,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -826,16 +867,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -868,7 +909,7 @@
       <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div class="mb-20 text-center">
           <span
-            class="text-volt text-sm font-bold tracking-[0.3em] data-text block mb-4"
+            class="text-volt2 text-sm font-bold tracking-[0.3em] data-text block mb-4"
             >HIGH-FEDILITY DESIGN</span
           >
           <h2 class="text-5xl sm:text-7xl font-bold tracking-tighter uppercase">
@@ -886,16 +927,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -910,16 +951,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -934,16 +975,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -958,16 +999,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -986,16 +1027,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -1009,16 +1050,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -1032,16 +1073,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -1124,7 +1165,7 @@
       <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div class="mb-20 text-center">
           <span
-            class="text-volt text-sm font-bold tracking-[0.3em] data-text block mb-4"
+            class="text-volt2 text-sm font-bold tracking-[0.3em] data-text block mb-4"
             >TESTIMONIALS</span
           >
           <h2
@@ -1147,16 +1188,16 @@
             >
               <!-- Technical Corner Markers -->
               <div
-                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt -translate-x-1 -translate-y-1"
+                class="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-volt2 -translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt translate-x-1 -translate-y-1"
+                class="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-volt2 translate-x-1 -translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt -translate-x-1 translate-y-1"
+                class="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-volt2 -translate-x-1 translate-y-1"
               ></div>
               <div
-                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt translate-x-1 translate-y-1"
+                class="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-volt2 translate-x-1 translate-y-1"
               ></div>
 
               <img
@@ -1293,6 +1334,34 @@
         } catch (e) {
           console.error("Error loading chart:", e);
         }
+      });
+    </script>
+
+    <script>
+      // Mobile menu toggle
+      const toggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+
+      toggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.contains('open');
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          mobileMenu.classList.add('open');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+          menuIcon.className = 'fa-solid fa-xmark text-2xl';
+        }
+      });
+
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        menuIcon.className = 'fa-solid fa-bars text-2xl';
+      }
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) closeMobileMenu();
       });
     </script>
   </body>
