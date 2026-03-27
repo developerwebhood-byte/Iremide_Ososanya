@@ -570,11 +570,9 @@
           >
             <!-- Wireframe -->
             <div
-              class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group transition-all duration-300 hover:scale-[1.05] hover:shadow-2xl"
+              class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group transition-all"
             >
-              <div
-                class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
+              
               <img
                 class="w-full h-full object-cover rounded-xl border border-white/10"
                 src="Images/Study Nest LF 1.png"
@@ -585,9 +583,7 @@
             <div
               class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group translate-y-4 md:translate-y-8"
             >
-              <div
-                class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
+              
               <img
                 class="w-full h-full object-cover rounded-xl border border-white/10"
                 src="Images/Study Nest LF 2.png"
@@ -598,7 +594,7 @@
             <div
               class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group z-10 shadow-2xl scale-105 border-brand-purple/50"
             >
-              <div class="absolute inset-0 bg-brand-purple/10"></div>
+              
               <img
                 class="w-full h-full object-cover rounded-xl border border-white/20"
                 src="Images/Study Nest LF 3.png"
@@ -609,9 +605,7 @@
             <div
               class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group translate-y-4 md:translate-y-8"
             >
-              <div
-                class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
+              
               <img
                 class="w-full h-full object-cover rounded-xl border border-white/10"
                 src="Images/Study Nest LF 4.png"
@@ -625,9 +619,6 @@
             <div
               class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group"
             >
-              <div
-                class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
               <img
                 class="w-full h-full object-cover rounded-xl border border-white/10"
                 src="Images/Study Nest LF 5.png"
@@ -637,9 +628,6 @@
             <div
               class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] mt-20 flex flex-col relative overflow-hidden group"
             >
-              <div
-                class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
               <img
                 class="w-full h-full object-cover rounded-xl border border-white/10"
                 src="Images/Study Nest LF 6.png"
@@ -649,9 +637,6 @@
             <div
               class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group"
             >
-              <div
-                class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
               <img
                 class="w-full h-full object-cover rounded-xl border border-white/10"
                 src="Images/Study Nest LF 7.png"
@@ -661,9 +646,6 @@
             <div
               class="bg-white/5 rounded-3xl p-4 border border-white/10 aspect-[9/19] mt-20 flex flex-col relative overflow-hidden group"
             >
-              <div
-                class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
               <img
                 class="w-full h-full object-cover rounded-xl border border-white/10"
                 src="Images/Study Nest LF 8.png"
@@ -699,11 +681,8 @@
             </p>
           </div>
           <div
-            class="bg-white/5 rounded-3xl w-[300px] h-[600px] p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group"
+            class="bg-white/5 rounded-3xl w-[200px] h-[600px] p-4 border border-white/10 aspect-[9/19] flex flex-col relative overflow-hidden group"
           >
-            <div
-              class="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            ></div>
             <img
               class="w-full h-full object-cover rounded-xl border border-white/10"
               src="Images/Study Nest LF 9.png"
@@ -1034,6 +1013,63 @@
 
       window.addEventListener("resize", () => {
         if (window.innerWidth >= 768) closeMobileMenu();
+      });
+    </script>
+    <!-- Lightbox Container -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 cursor-pointer">
+      <button id="lightbox-close" class="absolute top-6 right-6 text-white hover:text-brand-volt text-3xl focus:outline-none z-[101]">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="lightbox-img" src="" alt="Preview" class="max-w-[90vw] max-h-[90vh] object-contain rounded-xl shadow-2xl scale-95 transition-transform duration-300 pointer-events-none" />
+    </div>
+
+    <script>
+      // Lightbox functionality
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      const imagesToPreview = document.querySelectorAll('#lofi img, #postlofi img, #hifi img');
+
+      function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.remove('hidden');
+        // trigger reflow
+        void lightbox.offsetWidth;
+        lightbox.classList.remove('opacity-0');
+        lightboxImg.classList.remove('scale-95');
+        lightboxImg.classList.add('scale-100');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightboxPopup() {
+        lightbox.classList.add('opacity-0');
+        lightboxImg.classList.remove('scale-100');
+        lightboxImg.classList.add('scale-95');
+        setTimeout(() => {
+          lightbox.classList.add('hidden');
+          document.body.style.overflow = '';
+        }, 300);
+      }
+
+      imagesToPreview.forEach(img => {
+        img.classList.add('cursor-pointer');
+        img.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openLightbox(img.src);
+        });
+      });
+
+      lightboxClose.addEventListener('click', closeLightboxPopup);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightboxPopup();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+          closeLightboxPopup();
+        }
       });
     </script>
     <script src="../splash-cursor.js"></script>
