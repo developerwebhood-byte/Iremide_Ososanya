@@ -92,6 +92,46 @@
     .delay-300 {
       animation-delay: 0.3s;
     }
+
+    /* Mobile Menu Overlay */
+    #mobile-menu {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #mobile-menu .drawer {
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #mobile-menu.open .drawer {
+      transform: translateX(0);
+    }
+
+    /* Mobile Nav Link Hover Effect */
+    .mobile-nav-link {
+        position: relative;
+        display: inline-block;
+    }
+    .mobile-nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #ff8aac;
+        transition: width 0.3s ease;
+    }
+    .mobile-nav-link:hover::after {
+        width: 100%;
+    }
   </style>
 </head>
 
@@ -149,34 +189,62 @@
       </a>
     </div>
 
-    <!-- Mobile Menu Button -->
-    <button id="mobile-menu-btn" class="md:hidden text-white hover:text-volt focus:outline-none">
-      <i class="fa-solid fa-bars text-2xl"></i>
+    <button id="menu-toggle" class="md:hidden text-white hover:text-volt focus:outline-none" aria-label="Open menu">
+      <i id="menu-icon" class="fa-solid fa-bars text-2xl"></i>
     </button>
-
-    <!-- Mobile Nav Overlay -->
-    <div id="mobile-menu"
-      class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center space-y-8 transform translate-x-full transition-transform duration-300 md:hidden">
-      <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-3xl hover:text-volt focus:outline-none">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <a href="index.html"
-        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors">HOME</a>
-      <a href="About Page 2 - Variation 1 (1).html"
-        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors">ABOUT</a>
-      <div class="flex flex-col items-center space-y-4">
-        <span class="text-gray-500 text-xs tracking-widest uppercase">Works</span>
-        <a href="Study Quest/index.html" class="text-white hover:text-volt text-xl font-medium tracking-wide">STUDY
-          QUEST</a>
-        <a href="Matchmates/index.html"
-          class="text-white hover:text-volt text-xl font-medium tracking-wide">MATCHMATES</a>
-        <a href="AR Shopping/AR Shopping - Variation 2 (1).html"
-          class="text-white hover:text-volt text-xl font-medium tracking-wide">PANTRII</a>
-      </div>
-      <a href="Contact Page - Variation 2.html"
-        class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors">CONTACT</a>
-    </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu"
+    class="fixed inset-0 z-40 bg-black/40 backdrop-blur-md md:hidden"
+    aria-hidden="true">
+    
+    <!-- Drawer -->
+    <div class="drawer fixed right-0 top-0 h-screen w-[280px] bg-charcoal shadow-2xl flex flex-col items-start justify-start p-10 gap-6 overflow-y-auto">
+      <div class="w-full flex justify-end mb-8">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-[#ff8aac] transition-all hover:rotate-90 duration-300">
+          <i class="fa-solid fa-xmark text-3xl"></i>
+        </button>
+      </div>
+      
+      <a href="index.html" onclick="closeMobileMenu()"
+        class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+        HOME
+      </a>
+      <a href="About Page 2 - Variation 1 (1).html" onclick="closeMobileMenu()"
+        class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+        ABOUT
+      </a>
+      
+      <div class="flex flex-col items-start gap-4">
+        <a href="#works" onclick="closeMobileMenu()"
+          class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+          WORKS
+        </a>
+        <div class="flex flex-col items-start gap-4 pl-4 border-l-2 border-white/5 ml-1 mt-2">
+          <a href="Study Quest/index.html" onclick="closeMobileMenu()"
+            class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+            STUDY QUEST
+          </a>
+          <a href="Matchmates/index.html" onclick="closeMobileMenu()"
+            class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+            MATCHMATES
+          </a>
+          <a href="AR Shopping/AR Shopping - Variation 2 (1).html" onclick="closeMobileMenu()"
+            class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+            PANTRII
+          </a>
+        </div>
+      </div>
+      
+      <a href="Contact Page - Variation 2.html" onclick="closeMobileMenu()"
+        class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2 mt-2">
+        CONTACT
+      </a>
+    </div>
+    
+    <div class="absolute inset-0 -z-10" onclick="closeMobileMenu()"></div>
+  </div>
 
   <!-- Main Wrapper -->
   <main class="flex-grow pt-32 pb-20">
@@ -262,24 +330,33 @@
   </footer>
 
   <script>
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const closeMenuBtn = document.getElementById('close-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+    // Mobile menu toggle
+    const toggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
 
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.remove('translate-x-full');
+    toggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.contains("open");
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        mobileMenu.classList.add("open");
+        mobileMenu.setAttribute("aria-hidden", "false");
+        menuIcon.innerHTML = "";
+        menuIcon.className = "fa-solid fa-xmark text-2xl";
+      }
     });
 
-    closeMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('translate-x-full');
-    });
+    function closeMobileMenu() {
+      mobileMenu.classList.remove("open");
+      mobileMenu.setAttribute("aria-hidden", "true");
+      menuIcon.innerHTML = "";
+      menuIcon.className = "fa-solid fa-bars text-2xl";
+    }
 
-    // Close menu when clicking on a link
-    const mobileLinks = mobileMenu.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('translate-x-full');
-      });
+    // Close mobile menu on desktop resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) closeMobileMenu();
     });
   </script>
   <script src="splash-cursor.js"></script>

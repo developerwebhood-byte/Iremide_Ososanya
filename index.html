@@ -123,12 +123,42 @@
 
     /* Mobile Menu Overlay */
     #mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
 
     #mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #mobile-menu .drawer {
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #mobile-menu.open .drawer {
       transform: translateX(0);
+    }
+
+    /* Mobile Nav Link Hover Effect */
+    .mobile-nav-link {
+        position: relative;
+        display: inline-block;
+    }
+    .mobile-nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background-color: #ff8aac;
+        transition: width 0.3s ease;
+    }
+    .mobile-nav-link:hover::after {
+        width: 100%;
     }
 
     /* Responsive hero text */
@@ -204,24 +234,55 @@
 
   <!-- Mobile Menu Overlay -->
   <div id="mobile-menu"
-    class="fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10 md:hidden"
+    class="fixed inset-0 z-40 bg-black/40 backdrop-blur-md md:hidden"
     aria-hidden="true">
-    <a href="index.html" onclick="closeMobileMenu()"
-      class="text-white hover:text-[#ff8aac] text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
-      <i class="fa-solid fa-arrow-right text-sm"></i> HOME
-    </a>
-    <a href="About Page 2 - Variation 1 (1).html" onclick="closeMobileMenu()"
-      class="text-white hover:text-[#ff8aac] text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
-      <i class="fa-solid fa-arrow-right text-sm"></i> ABOUT
-    </a>
-    <a href="#works" onclick="closeMobileMenu()"
-      class="text-white hover:text-[#ff8aac] text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
-      <i class="fa-solid fa-arrow-right text-sm"></i> WORKS
-    </a>
-    <a href="Contact Page - Variation 2.html" onclick="closeMobileMenu()"
-      class="text-white hover:text-[#ff8aac] text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
-      <i class="fa-solid fa-arrow-right text-sm"></i> CONTACT
-    </a>
+    
+    <!-- Drawer -->
+    <div class="drawer fixed right-0 top-0 h-screen w-[280px] bg-charcoal shadow-2xl flex flex-col items-start justify-start p-10 gap-6 overflow-y-auto">
+      <div class="w-full flex justify-end mb-8">
+        <button onclick="closeMobileMenu()" class="text-white hover:text-[#ff8aac] transition-all hover:rotate-90 duration-300">
+          <!-- <i class="fa-solid fa-xmark text-3xl"></i> -->
+        </button>
+      </div>
+      
+      <a href="index.html" onclick="closeMobileMenu()"
+        class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+        HOME
+      </a>
+      <a href="About Page 2 - Variation 1 (1).html" onclick="closeMobileMenu()"
+        class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+        ABOUT
+      </a>
+      
+      <div class="flex flex-col items-start gap-4">
+        <a href="#works" onclick="closeMobileMenu()"
+          class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+          WORKS
+        </a>
+        <div class="flex flex-col items-start gap-4 pl-4 border-l-2 border-white/5 ml-1 mt-2">
+          <a href="Study Quest/index.html" onclick="closeMobileMenu()"
+            class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+            STUDY QUEST
+          </a>
+          <a href="Matchmates/index.html" onclick="closeMobileMenu()"
+            class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+            MATCHMATES
+          </a>
+          <a href="AR Shopping/AR Shopping - Variation 2 (1).html" onclick="closeMobileMenu()"
+            class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+            PANTRII
+          </a>
+        </div>
+      </div>
+      
+      <a href="Contact Page - Variation 2.html" onclick="closeMobileMenu()"
+        class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2 mt-2">
+        CONTACT
+      </a>
+    </div>
+    
+    <!-- Tap to Close Overlay area (if needed, currently handled by parent click or explicit close) -->
+    <div class="absolute inset-0 -z-10" onclick="closeMobileMenu()"></div>
   </div>
 
   <!-- HERO SECTION -->
@@ -229,7 +290,7 @@
     class="relative pt-32 pb-15 md:pt-30 md:pb-20 px-6 min-h-[90vh] flex flex-col justify-center overflow-hidden">
     <div class="max-w-7xl mx-auto w-full relative z-10">
       <!-- Main Typography -->
-      <div class="flex flex-col-2 gap-20">
+      <div class="flex flex-col-2 sm:flex-row gap-20">
         <div class="relative">
           <h1
             class="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[10rem] leading-[0.9] tracking-tighter w-full lg:w-[85%] hero-name">
@@ -417,6 +478,7 @@
       } else {
         mobileMenu.classList.add("open");
         mobileMenu.setAttribute("aria-hidden", "false");
+        menuIcon.innerHTML = "";
         menuIcon.className = "fa-solid fa-xmark text-2xl";
       }
     });
@@ -424,6 +486,7 @@
     function closeMobileMenu() {
       mobileMenu.classList.remove("open");
       mobileMenu.setAttribute("aria-hidden", "true");
+      menuIcon.innerHTML = "";
       menuIcon.className = "fa-solid fa-bars text-2xl";
     }
 

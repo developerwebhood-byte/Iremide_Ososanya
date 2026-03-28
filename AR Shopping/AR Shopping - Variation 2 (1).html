@@ -122,12 +122,44 @@
         background: #b8b0a3;
       }
       /* Mobile Menu */
+      /* Mobile Menu Overlay */
       #mobile-menu {
-        transform: translateX(100%);
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
       }
+
       #mobile-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #mobile-menu .drawer {
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      #mobile-menu.open .drawer {
         transform: translateX(0);
+      }
+
+      /* Mobile Nav Link Hover Effect */
+      .mobile-nav-link {
+          position: relative;
+          display: inline-block;
+      }
+      .mobile-nav-link::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: -4px;
+          left: 0;
+          background-color: #ff8aac;
+          transition: width 0.3s ease;
+      }
+      .mobile-nav-link:hover::after {
+          width: 100%;
       }
     </style>
   </head>
@@ -210,25 +242,55 @@
     </nav>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-black/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10 md:hidden" aria-hidden="true">
-      <a href="index.html" onclick="closeMobileMenu()" class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
-        <i class="fa-solid fa-arrow-right text-sm"></i> HOME
-      </a>
-      <a href="About Page 2 - Variation 1 (1).html" onclick="closeMobileMenu()" class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
-        <i class="fa-solid fa-arrow-right text-sm"></i> ABOUT
-      </a>
-      <a href="#works" onclick="closeMobileMenu()" class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
-        <i class="fa-solid fa-arrow-right text-sm"></i> WORKS
-      </a>
-      <a href="Contact Page - Variation 2.html" onclick="closeMobileMenu()" class="text-white hover:text-volt text-2xl font-bold tracking-widest transition-colors flex items-center gap-3">
-        <i class="fa-solid fa-arrow-right text-sm"></i> CONTACT
-      </a>
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-black/40 backdrop-blur-md md:hidden" aria-hidden="true">
+      
+      <!-- Drawer -->
+      <div class="drawer fixed right-0 top-0 h-screen w-[280px] bg-black shadow-2xl flex flex-col items-start justify-start p-10 gap-6 overflow-y-auto">
+        <div class="w-full flex justify-end mb-8">
+          <button onclick="closeMobileMenu()" class="text-white hover:text-[#ff8aac] transition-all hover:rotate-90 duration-300">
+            <i class="fa-solid fa-xmark text-3xl"></i>
+          </button>
+        </div>
+
+        <a href="../index.html" onclick="closeMobileMenu()" class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+          HOME
+        </a>
+        <a href="../About Page 2 - Variation 1 (1).html" onclick="closeMobileMenu()" class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+          ABOUT
+        </a>
+        
+        <div class="flex flex-col items-start gap-4">
+          <a href="../index.html#works" onclick="closeMobileMenu()" class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2">
+            WORKS
+          </a>
+          <div class="flex flex-col items-start gap-4 pl-4 border-l-2 border-white/5 ml-1 mt-2">
+            <a href="../Study Quest/index.html" onclick="closeMobileMenu()"
+              class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+              STUDY QUEST
+            </a>
+            <a href="../Matchmates/index.html" onclick="closeMobileMenu()"
+              class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+              MATCHMATES
+            </a>
+            <a href="index.html" onclick="closeMobileMenu()"
+              class="mobile-nav-link text-gray-400 hover:text-[#ff8aac] text-base font-medium tracking-[0.1em] transition-all hover:translate-x-2">
+              PANTRII
+            </a>
+          </div>
+        </div>
+        
+        <a href="../Contact Page - Variation 2.html" onclick="closeMobileMenu()" class="group mobile-nav-link text-white hover:text-[#ff8aac] text-2xl font-bold tracking-[0.2em] transition-all hover:translate-x-2 mt-2">
+          CONTACT
+        </a>
+      </div>
+
+      <div class="absolute inset-0 -z-10" onclick="closeMobileMenu()"></div>
     </div>
 
     <!-- 1. HERO SECTION -->
     <section
       id="hero"
-      class="relative w-full min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-organic"
+      class="relative w-full min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden bg-gradient-organic"
     >
       <!-- Decorative background elements -->
       <div
@@ -241,32 +303,32 @@
         class="absolute -bottom-8 left-1/2 w-80 h-80 bg-earth-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"
       ></div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 w-full">
         <div
-          class="flex flex-col lg:flex-row items-center justify-between gap-12"
+          class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 transition-all duration-700"
         >
           <div
             class="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left"
           >
             <h1
-              class="fade-in-up delay-100 font-serif text-6xl sm:text-7xl lg:text-8xl xl:text-9xl text-earth-900 tracking-widest mb-2 leading-none"
+              class="fade-in-up delay-100 font-serif text-5xl sm:text-7xl lg:text-8xl xl:text-9xl text-earth-900 tracking-widest mb-4 leading-none"
             >
               Pantrii
             </h1>
             <h2
-              class="fade-in-up delay-200 font-serif text-2xl sm:text-3xl lg:text-4xl text-earth-800 italic mb-8"
+              class="fade-in-up delay-200 font-serif text-xl sm:text-3xl lg:text-4xl text-earth-800 italic mb-8"
             >
               AR Shopping Experience
             </h2>
 
             <p
-              class="fade-in-up delay-300 text-lg sm:text-xl text-earth-800/80 max-w-xl leading-relaxed font-light"
+              class="fade-in-up delay-300 text-base sm:text-lg lg:text-xl text-earth-800/80 max-w-xl leading-relaxed font-light"
             >
               Pantrii is a mobile app that uses augmented reality (AR) to guide
               users directly to the items they are looking for inside physical
               grocery stores. Users use their phone camera and follow arrows on
               the screen, similar to Google Maps, to reach their item faster.
-              This helps reduce frustration and saves time.This project was
+              This helps reduce frustration and saves time. This project was
               created to explore how AR can improve online shopping by making it
               more intuitive, engaging, and realistic, while reducing decision
               fatigue and uncertainty about products.
@@ -274,16 +336,16 @@
           </div>
 
           <div
-            class="w-full lg:w-1/2 relative flex justify-center lg:justify-end mt-12 lg:mt-0"
+            class="w-full lg:w-1/2 relative flex justify-center lg:justify-end mt-8 lg:mt-0"
           >
             <div
-              class="relative w-full max-w-md aspect-[3/4] fade-in-up delay-300"
+              class="relative w-full max-w-sm sm:max-w-md aspect-[3/4] fade-in-up delay-300"
             >
               <div
                 class="absolute inset-0 bg-gradient-to-tr from-accent-sage/30 to-accent-sand/30 organic-shape blur-2xl transform scale-110 z-0"
               ></div>
               <div
-                class="relative z-10 w-full h-full mb-10 rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white/40 backdrop-blur-sm transform rotate-[-2deg] hover:rotate-0 hover:scale-[1.02] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-700"
+                class="relative z-10 w-full h-full mb-10 rounded-[2.5rem] overflow-hidden shadow-2xl border-4 lg:border-8 border-white/40 backdrop-blur-sm lg:rotate-[-2deg] hover:rotate-0 hover:scale-[1.02] hover:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] transition-all duration-700"
               >
                 <img
                   class="w-full h-full object-cover"
@@ -298,8 +360,8 @@
     </section>
 
     <!-- 2. INTRO CARDS -->
-    <section id="intro-cards" class="w-full py-24 bg-earth-200/50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="intro-cards" class="w-full py-16 sm:py-24 bg-earth-200/50">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
         >
@@ -312,7 +374,7 @@
             >
               <i class="fa-solid fa-briefcase text-earth-800"></i>
             </div>
-            <h3 class="font-serif text-xl text-earth-900 mb-3">Project Type</h3>
+            <h3 class="font-serif text-xl text-earth-900 mb-3 uppercase tracking-wider">Project Type</h3>
             <p class="text-earth-800/70 font-light leading-relaxed">
               Conceptual Product Design, AR Interface, E-commerce
             </p>
@@ -327,7 +389,7 @@
             >
               <i class="fa-solid fa-mobile-screen text-earth-800"></i>
             </div>
-            <h3 class="font-serif text-xl text-earth-900 mb-3">Platform</h3>
+            <h3 class="font-serif text-xl text-earth-900 mb-3 uppercase tracking-wider">Platform</h3>
             <p class="text-earth-800/70 font-light leading-relaxed">
               iOS Mobile Application, Augmented Reality (ARKit)
             </p>
@@ -342,7 +404,7 @@
             >
               <i class="fa-solid fa-bullseye text-earth-800"></i>
             </div>
-            <h3 class="font-serif text-xl text-earth-900 mb-3">Goal</h3>
+            <h3 class="font-serif text-xl text-earth-900 mb-3 uppercase tracking-wider">Goal</h3>
             <p class="text-earth-800/70 font-light leading-relaxed">
               Bridge the tactile gap in digital retail through spatial
               computing.
@@ -358,7 +420,7 @@
             >
               <i class="fa-regular fa-eye text-earth-800"></i>
             </div>
-            <h3 class="font-serif text-xl text-earth-900 mb-3">Focus</h3>
+            <h3 class="font-serif text-xl text-earth-900 mb-3 uppercase tracking-wider">Focus</h3>
             <p class="text-earth-800/70 font-light leading-relaxed">
               Human-centered interactions, organic UI, emotional connection.
             </p>
@@ -680,7 +742,7 @@
     </section>
 
     <!-- 9. SOLUTION PRESENTATION -->
-    <section id="solution" class="w-full py-32 bg-earth-100">
+    <section id="solution-details" class="w-full py-32 bg-earth-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col lg:flex-row items-center gap-16">
           <div class="w-full lg:w-1/2 relative">
@@ -896,23 +958,24 @@
       </div>
     </section>
 
-    <!-- 11. OUTCOME -->
-    <section id="outcome" class="w-full py-32 bg-earth-100">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- 11. USER FLOW -->
+    <section id="user-flow" class="w-full py-24 sm:py-32 bg-earth-100">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div class="text-center mb-16">
-          <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6">
+          <span class="text-accent-sage text-sm font-medium tracking-widest uppercase mb-4 block">Process</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6 uppercase tracking-wider">
             User Flow
           </h2>
-          <p>
-            User flow: Enter VR →Add items to cart →Start → Browse store → Get
+          <p class="text-lg text-earth-800/70 max-w-2xl mx-auto font-light leading-relaxed">
+            User flow: Enter VR → Add items to cart → Start → Browse store → Get
             product → Checkout → Confirm order
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
-          <div class="relative group overflow-hidden rounded-[3rem]">
+        <div class="grid grid-cols-1 gap-8">
+          <div class="relative group overflow-hidden rounded-[3rem] shadow-xl">
             <img
-              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-[400px] sm:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa93514aa2-0c90da8e744ccd8444d1.png"
               alt="Lifestyle photography of person using app happily in warm living room setting"
             />
@@ -922,47 +985,48 @@
     </section>
 
     <!-- Low-Fidelity Prototype -->
-    <section id="outcome" class="w-full py-32 bg-earth-100">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="low-fidelity" class="w-full py-24 sm:py-32 bg-earth-200/30">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div class="text-center mb-16">
-          <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6">
+          <span class="text-accent-sand text-sm font-medium tracking-widest uppercase mb-4 block">Drafting</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6 uppercase tracking-wider">
             Low-Fidelity Screens
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="relative group overflow-hidden rounded-[3rem]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          <div class="relative group overflow-hidden rounded-[3rem] shadow-lg">
             <img
-              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-[400px] sm:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa93514aa2-0c90da8e744ccd8444d1.png"
-              alt="Lifestyle photography of person using app happily in warm living room setting"
+              alt="Low-Fidelity Screen 1"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-10"
+              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-8 sm:p-10"
             >
               <h4 class="font-serif text-2xl text-white mb-2">
                 Increased Confidence
               </h4>
-              <p class="text-white/80 font-light">
+              <p class="text-white/80 font-light text-sm sm:text-base">
                 Users reported a 45% increase in purchase confidence due to
                 spatial context.
               </p>
             </div>
           </div>
 
-          <div class="relative group overflow-hidden rounded-[3rem]">
+          <div class="relative group overflow-hidden rounded-[3rem] shadow-lg">
             <img
-              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-[400px] sm:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ec83842e74-a9c7cd85b9fbb6e3bcf2.png"
-              alt="Close up of beautiful elegant UI design on mobile screen, soft shadows, premium feel"
+              alt="Low-Fidelity Screen 2"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-10"
+              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-8 sm:p-10"
             >
               <h4 class="font-serif text-2xl text-white mb-2">
                 Extended Engagement
               </h4>
-              <p class="text-white/80 font-light">
+              <p class="text-white/80 font-light text-sm sm:text-base">
                 Average session time doubled as users enjoyed the playful
                 discovery process.
               </p>
@@ -972,120 +1036,126 @@
       </div>
     </section>
 
-    <!-- 12. MISSION STATEMENT -->
+    <!-- 12. USABILITY TESTING -->
     <section
-      id="mission"
-      class="w-full px-5 bg-white border-t border-earth-200/50 text-center"
+      id="usability-testing"
+      class="w-full py-24 sm:py-32 bg-white border-t border-earth-200/50"
     >
-      <div class="max-w-7xl flex flex-col-2 items-center justify-start">
-        <div class="w-1/2 mx-auto text-left px-4 sm:px-6 lg:px-8">
-          <h2
-            class="font-serif text-4xl sm:text-5xl lg:text-6xl text-earth-900 mb-10 leading-tight"
-          >
-            Usability
-            <span class="italic text-accent-sand">Testing</span>
-          </h2>
-          <p
-            class="text-xl sm:text-2xl text-earth-800/80 leading-relaxed font-light"
-          >
-            Testing with 4 users revealed: <br />Positive: <br />• Easy to
-            understand <br />• Fun experience <br/><br />Issues: <br />• Navigation
-            is a bit confusing <br /><br/>Improvements: <br />• Added clearer buttons
-            <br />• Simplified layout
-          </p>
-        </div>
-        <div class="p-10">
-          <img
-            class="w-full h-[500px] object-cover rounded-xl transition-transform duration-700 group-hover:scale-105"
-            src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa93514aa2-0c90da8e744ccd8444d1.png"
-            alt="Lifestyle photography of person using app happily in warm living room setting"
-          />
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          <div class="w-full lg:w-1/2">
+            <span class="text-accent-sage text-sm font-medium tracking-widest uppercase mb-4 block">Feedback</span>
+            <h2
+              class="font-serif text-4xl sm:text-5xl lg:text-6xl text-earth-900 mb-8 leading-tight uppercase tracking-wider"
+            >
+              Usability
+              <span class="italic text-accent-sand lowercase">Testing</span>
+            </h2>
+            <div class="space-y-6 text-lg text-earth-800/80 font-light leading-relaxed">
+              <p>
+                Testing with 4 users revealed critical insights that shaped the final product:
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="bg-earth-100 p-6 rounded-2xl">
+                  <h4 class="font-serif text-xl mb-3 text-earth-900 uppercase">Positive</h4>
+                  <ul class="space-y-2 text-base">
+                    <li>• Easy to understand</li>
+                    <li>• Fun experience</li>
+                  </ul>
+                </div>
+                <div class="bg-earth-100 p-6 rounded-2xl">
+                  <h4 class="font-serif text-xl mb-3 text-earth-900 uppercase">Improvements</h4>
+                  <ul class="space-y-2 text-base">
+                    <li>• Clearer navigation buttons</li>
+                    <li>• Simplified spatial layout</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-1/2 relative">
+            <div class="relative z-10 overflow-hidden rounded-[2rem] shadow-2xl">
+              <img
+                class="w-full h-auto sm:h-[500px] object-cover transition-transform duration-700 hover:scale-105"
+                src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa93514aa2-0c90da8e744ccd8444d1.png"
+                alt="Usability testing in action"
+              />
+            </div>
+            <!-- Decorative accent -->
+            <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-accent-sand/20 rounded-full blur-2xl -z-10"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- High-Fidelity Design -->
-    <section id="outcome" class="w-full py-32 bg-earth-100">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="high-fidelity" class="w-full py-24 sm:py-32 bg-earth-100">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div class="text-center mb-16">
-          <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6">
+          <span class="text-accent-sage text-sm font-medium tracking-widest uppercase mb-4 block">Final Polish</span>
+          <h2 class="font-serif text-4xl sm:text-5xl text-earth-900 mb-6 uppercase tracking-wider">
             High-Fidelity Design
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div class="relative group overflow-hidden rounded-[3rem]">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- HF 1 -->
+          <div class="relative group overflow-hidden rounded-[2.5rem] shadow-lg">
             <img
-              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-[450px] sm:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa93514aa2-0c90da8e744ccd8444d1.png"
-              alt="Lifestyle photography of person using app happily in warm living room setting"
+              alt="High-Fidelity Screen 1"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-10"
+              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-transparent flex flex-col justify-end p-8"
             >
-              <h4 class="font-serif text-2xl text-white mb-2">
-                Increased Confidence
-              </h4>
-              <p class="text-white/80 font-light">
-                Users reported a 45% increase in purchase confidence due to
-                spatial context.
-              </p>
+              <h4 class="font-serif text-xl text-white mb-2">Visual Clarity</h4>
+              <p class="text-white/70 font-light text-sm">Enhanced spatial rendering for better product context.</p>
             </div>
           </div>
 
-          <div class="relative group overflow-hidden rounded-[3rem]">
+          <!-- HF 2 -->
+          <div class="relative group overflow-hidden rounded-[2.5rem] shadow-lg">
             <img
-              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+              class="w-full h-[450px] sm:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105"
               src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ec83842e74-a9c7cd85b9fbb6e3bcf2.png"
-              alt="Close up of beautiful elegant UI design on mobile screen, soft shadows, premium feel"
+              alt="High-Fidelity Screen 2"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-10"
+              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-transparent flex flex-col justify-end p-8"
             >
-              <h4 class="font-serif text-2xl text-white mb-2">
-                Extended Engagement
-              </h4>
-              <p class="text-white/80 font-light">
-                Average session time doubled as users enjoyed the playful
-                discovery process.
-              </p>
-            </div>
-          </div>
-          <div class="relative group overflow-hidden rounded-[3rem]">
-            <img
-              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa93514aa2-0c90da8e744ccd8444d1.png"
-              alt="Lifestyle photography of person using app happily in warm living room setting"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-10"
-            >
-              <h4 class="font-serif text-2xl text-white mb-2">
-                Increased Confidence
-              </h4>
-              <p class="text-white/80 font-light">
-                Users reported a 45% increase in purchase confidence due to
-                spatial context.
-              </p>
+              <h4 class="font-serif text-xl text-white mb-2">Micro-Interactions</h4>
+              <p class="text-white/70 font-light text-sm">Smooth transitions during the browsing phase.</p>
             </div>
           </div>
 
-          <div class="relative group overflow-hidden rounded-[3rem]">
+          <!-- HF 3 -->
+          <div class="relative group overflow-hidden rounded-[2.5rem] shadow-lg">
             <img
-              class="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ec83842e74-a9c7cd85b9fbb6e3bcf2.png"
-              alt="Close up of beautiful elegant UI design on mobile screen, soft shadows, premium feel"
+              class="w-full h-[450px] sm:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105"
+              src="https://storage.googleapis.com/uxpilot-auth.appspot.com/fa93514aa2-0c90da8e744ccd8444d1.png"
+              alt="High-Fidelity Screen 3"
             />
             <div
-              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-earth-900/20 to-transparent flex flex-col justify-end p-10"
+              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-transparent flex flex-col justify-end p-8"
             >
-              <h4 class="font-serif text-2xl text-white mb-2">
-                Extended Engagement
-              </h4>
-              <p class="text-white/80 font-light">
-                Average session time doubled as users enjoyed the playful
-                discovery process.
-              </p>
+              <h4 class="font-serif text-xl text-white mb-2">Intuitive Mapping</h4>
+              <p class="text-white/70 font-light text-sm">Real-time AR overlay for item discovery.</p>
+            </div>
+          </div>
+
+          <!-- HF 4 -->
+          <div class="relative group overflow-hidden rounded-[2.5rem] shadow-lg">
+            <img
+              class="w-full h-[450px] sm:h-[550px] object-cover transition-transform duration-700 group-hover:scale-105"
+              src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ec83842e74-a9c7cd85b9fbb6e3bcf2.png"
+              alt="High-Fidelity Screen 4"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-transparent flex flex-col justify-end p-8"
+            >
+              <h4 class="font-serif text-xl text-white mb-2">Seamless Checkout</h4>
+              <p class="text-white/70 font-light text-sm">Conversational payment flow for reduced friction.</p>
             </div>
           </div>
         </div>
@@ -1178,6 +1248,7 @@
         } else {
           mobileMenu.classList.add('open');
           mobileMenu.setAttribute('aria-hidden', 'false');
+          menuIcon.innerHTML = '';
           menuIcon.className = 'fa-solid fa-xmark text-2xl';
         }
       });
@@ -1185,6 +1256,7 @@
       function closeMobileMenu() {
         mobileMenu.classList.remove('open');
         mobileMenu.setAttribute('aria-hidden', 'true');
+        menuIcon.innerHTML = '';
         menuIcon.className = 'fa-solid fa-bars text-2xl';
       }
 
